@@ -1,5 +1,14 @@
+import controllers.FlatController;
+
 public class Main {
     public static void main(String[] args) {
+
+        String fileName = "sources/flat.csv";
+        if (args != null) {
+            fileName = args[0];
+        }
+
+     //   FlatController.read(fileName);
 
         //Старт программы
                 //вызов методов для различных операций

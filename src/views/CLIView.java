@@ -3,24 +3,32 @@ package views;
 
 import controllers.FlatController;
 import controllers.IFlatController;
+import controllers.Utils;
 import models.Flat;
+import models.Furnish;
+import models.House;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import utils.MutableFields;
 
 public class CLIView {      //command line interface
 
     //взаимодействие с командной стракой происходит тут
     private IFlatController flatController;
+    private Scanner scanner;
+    private Date date;
 
-    public CLIView(){
+    public CLIView() {
         flatController = new FlatController();
+        scanner = new Scanner(System.in);
     }
 
     public void startCommunication() {
-        Scanner scanner = new Scanner(System.in);
         String cmd;
-        boolean loopIsTrue= true;
+        boolean loopIsTrue = true;
 
         do {
             //reading new command
@@ -45,22 +53,22 @@ public class CLIView {      //command line interface
 
                 case "help":
                     flatController.addCommand(cmd);
-                    help();
+                    this.help();
                     break;
 
                 case "info":
                     flatController.addCommand(cmd);
-                    startInfoCommand();     //flatRepository метод
+                    this.startInfoCommand();     //flatRepository метод
                     break;
 
                 case "show":
                     flatController.addCommand(cmd);
-                    flatController.show();
+                    this.show();
                     break;
 
                 case "add":
                     flatController.addCommand(cmd);
-                    flatController.addFlat();
+                    this.addFlat();
                     break;
 
                 case "update":
@@ -140,10 +148,10 @@ public class CLIView {      //command line interface
     public void startInfoCommand() {
         //Roman
         System.out.println("This FLAT MANAGER was initialized on " + this.date + ".");
-        System.out.println("At the moment, the FLAT MANAGER has " + flats.size() + " of flats saved.");
-        if (flats.size() < 10)
+        System.out.println("At the moment, the FLAT MANAGER has " + flatController.getFlatRepo().getFlat().size() + " of flats saved.");
+        if (flatController.getFlatRepo().getFlat().size() < 10)
             System.out.println("Hardly impressive - but there is room for improvement");
-        if (flats.size() >= 10)
+        if (flatController.getFlatRepo().getFlat().size() >= 10)
             System.out.println("That's a lot of flats!");
         System.out.println("FLAT MANAGER is the result of collective effort by Team 1, Cohort 40_2 of AIT TR course.");
         System.out.println("- Sergej Schmidt");
@@ -154,12 +162,294 @@ public class CLIView {      //command line interface
         System.out.println("We eagerly await your feedback!");
     }
 
-    //Switch - Case проверка команд
+    public void show() {
+        System.out.println("Showing all flats:");
+        List<Flat> flats = flatController.show();
+        for (Flat flat : flats) {
+            System.out.println(flat);
+        }
+        //Switch - Case проверка команд
+    }
+
+    public void addFlat() {
+        System.out.println("Add a new flat!");
+        String addName = getFlatName();
+        int addArea = getFlatArea();
+        int addNrRooms = getFlatNrRooms();
+        boolean addBalcony = getFlatBalcony();
+        Furnish furniture = getFlatFurniture();
+        House h1 = getHouse();
+        //add new FLat
+        Flat flat = new Flat(addName, addArea, addNrRooms, addBalcony, furniture, h1);
+        flatController.addFlat(flat);
+        System.out.println("Following flat has been added to the list:");
+        System.out.println(flat);
+    }
+
+    private String getFlatName() {
+        String flatName;
+        do {
+            System.out.println("Enter flat's name...");
+            flatName = scanner.nextLine();
+            if (!Utils.isString(flatName)) {
+                System.err.println("Name can't be empty.");
+            } else {
+                return flatName;
+            }
+        } while (true);
+    }
+
+    private int getFlatArea() {
+        String lineIn;
+        int addArea = -1;
+        do {
+            System.out.println("Enter flat's area in square meters...");
+            lineIn = scanner.nextLine();
+            if (Utils.isInt(lineIn)) {
+                addArea = Integer.valueOf(lineIn);
+                if (Flat.validateArea(addArea)){
+                    System.out.println("Area accepted");
+                    break;
+                }else {
+                    System.err.println("Unacceptable area, must be between 0 and 200 square meters.");
+                }
+            } else {
+                System.err.println("Unacceptable entry, a number is required.");
+            }
+        } while (true);
+        return addArea;
+    }
+
+    //auxiliary method to allow user to enter the number of flat's rooms
+    private int getFlatNrRooms() {
+        String lineIn;
+        int addNrRooms = -1;
+        do {
+            System.out.println("Enter the number of flat's rooms...");
+            lineIn = scanner.nextLine();
+            if (Utils.isInt(lineIn)) {
+                addNrRooms = Integer.valueOf(lineIn);
+                if (Flat.validateNumberOfRooms(addNrRooms)) {
+                    //continue here;
+                    //break to the cycle's beginning doesn't work
+                    break;
+                }
+                System.out.println("Unacceptable entry, provide number of rooms between 0 and 8.");
+            } else {
+                System.out.println("Unacceptable entry, must be a number of rooms between 0 and 8.");
+            }
+        } while (true);
+        return addNrRooms;
+    }
+
+    //auxiliary method to allow user to enter whether the flat has a balcony
+    private boolean getFlatBalcony() {
+        String lineIn;
+        boolean addBalcony = false;
+        do {
+            System.out.println("Please enter whether the flat has a balcony");
+            System.out.println("yes/ja  or  no/nein");
+            lineIn = scanner.nextLine().toLowerCase();
+            if (lineIn.equals("yes") || lineIn.equals("ja")) {
+                addBalcony = true;
+                break;
+            } else if (lineIn.equals("no") || lineIn.equals("nein")) {
+                addBalcony = false;
+                break;
+            } else {
+                System.err.println("Unacceptable entry, please try again");
+            }
+        } while (true);
+        return addBalcony;
+    }
+
+    //auxiliary method to allow user to grade the flat's furniture
+    private Furnish getFlatFurniture() {
+        String lineIn;
+        Furnish furniture = null;
+        do {
+            System.out.println("If you wish, determine the room's furnishing.");
+            System.out.println("yes/ja to continue, no/nein to skip");
+            lineIn = scanner.nextLine().toLowerCase();
+            if (lineIn.equals("yes") || lineIn.equals("ja")) {
+                do {
+                    System.out.println("Determine the level of furnishing:  ");
+                    System.out.println("DESIGNER,\n" +
+                            "    NONE,\n" +
+                            "    BAD,\n" +
+                            "    LITTLE");
+                    lineIn = scanner.nextLine().toUpperCase();
+                    switch (lineIn) {
+                        case "DESIGNER":
+                            return Furnish.DESIGNER;
+                        case "NONE":
+                            return Furnish.NONE;
+                        case "BAD":
+                            return Furnish.BAD;
+                        case "LITTLE":
+                            return Furnish.LITTLE;
+                        default:
+                            System.err.println("Unacceptable entry, please try again.");
+                    }
+                } while (true);
+            } else if (lineIn.equals("no") || lineIn.equals("nein")) {
+                return furniture;
+            } else {
+                System.err.println("Unacceptable entry, please try again.");
+            }
+        } while (true);
+    }
 
 
+    //auxiliary method to add a new House to a building
+    private House getHouse() {
+        House house = new House(getHouseName(), getHouseYear());
+        return house;
+    }
+
+    //auxiliary method to allow user to provide house's building year
+    private int getHouseYear() {
+        while (true) {
+            System.out.println("Enter the house's building year:");
+            String line = scanner.nextLine();
+            if (!Utils.isInt(line)) {
+                System.err.println("That's no number!");
+                continue;
+            }
+            int year = Integer.parseInt(line);
+            if (House.validateYear(year)) {
+                return year;
+            }
+            System.err.println("The year must be lower than 2030 and higher than 1850!");
+        }
+    }
+
+    //auxiliary method to allow user to provide house's name
+    private String getHouseName() {
+        while (true) {
+            System.out.println("Please enter the house's name: ");
+            String line = scanner.nextLine();
+            if (!Utils.isString(line)) {
+                System.err.println("That's an empty line!");
+                continue;
+            }
+            return line;
+        }
+    }
+
+
+
+    //UPDATE FLAT BY ID
+    public void updateById(String args) {
+        //read ID, find if ithere is a flat with such id, return index
+        if (!Utils.isLong(args)) {
+            System.err.println("Unacceptable entry, numbers required!");
+            return;
+        }
+            //searching got the flat with this ID and grabbing its index
+            long id = Long.valueOf(args);
+
+
+        int index = flatController..findListIndexByFlatID(args);
+        //if no such flat - get out
+        if (index == -1) {
+            System.err.println("There is no flat with such ID!");
+            return;
+        }
+        boolean looper = true;
+        do {
+            // ask for parameter to change
+            System.out.println("Please let us know which parameter of the apartment do you wish to change.");
+            System.out.println("Acceptable parameters are: \n" +
+                    "name, \n" +
+                    "area, \n" +
+                    "rooms, \n" +
+                    "balcony, \n" +
+                    "furnish, \n" +
+                    "house");
+            System.out.println("Type 'done' if you wish to stop updating the apartment.");
+            String lineIn = scanner.nextLine().toUpperCase();
+            if (!Utils.isEnum(lineIn,MutableFields.class)) {
+                System.out.println("не корректно");
+                return;
+            }
+            MutableFields changeField = MutableFields.valueOf(lineIn);
+            System.out.println("укажите новое значение");
+            lineIn = scanner.nextLine();
+
+
+
+            //switch case launching add-commands to read the values and apply them
+            // to the flat with index [index]
+            switch (changeField) {
+
+                // 1. Neterable fields should be in Ename
+                // Метод
+
+
+
+
+
+                case NAME:
+                    //metod Update
+                    flatController.getFlatRepo().getFlat().get(index).setName(getFlatName());
+                    System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+                    break;
+                case AREA:
+                    if (!Utils.isInt(lineIn)){
+                        System.out.println();
+                        return;
+                    }
+                    int area = Integer.parseInt(lineIn);
+                    if (!Flat.validateArea(area)){
+                        System.out.println("failer");
+                        return;
+                    }
+                    flatController.update(changeField, value);
+                     break;
+                case "rooms":
+                    flatController.getFlatRepo().getFlat().get(index).setNumberOfRooms(getFlatNrRooms());
+                    System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+                    break;
+                case "balcony":
+                    flatController.getFlatRepo().getFlat().get(index).setBalcony(getFlatBalcony());
+                    System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+                    break;
+                case "furnish":
+                    flatController.getFlatRepo().getFlat().get(index).setFurnish(getFlatFurniture());
+                    System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+                    break;
+                case "house":
+                    flatController.getFlatRepo().getFlat().get(index).setHouse(getHouse());
+                    System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+                    break;
+                case "done":
+                    looper = false;
+                    break;
+                default:
+                    System.err.println("Unacceptable entry!");
+            }
+        } while (looper);
+
+    }
+
+
+    //REMOVE A FLAT BY ID
+    public void removeById(String args) {
+        //read ID, find if it here is a flat with such id, return index
+        int index = flatController.findListIndexByFlatID(args);
+        if (index != -1) {
+             flats.remove(index);
+            System.out.println("Flat with ID " + args + " removed from the list!");
+        } else {
+            System.err.println("No apartment with such ID found!");
+        }
+    }
 
 
 }
+
+
 //
 //Задание на сейчас:
 //

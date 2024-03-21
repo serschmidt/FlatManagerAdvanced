@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="comments added">
-      <change afterPath="$PROJECT_DIR$/src/Task.md" afterDir="false" />
+    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="Flat and House">
+      <change afterPath="$PROJECT_DIR$/src/utils/MutableFields.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/FlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FlatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Flat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Flat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/IFlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/IFlatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/FlatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/FlatRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/IRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/CLIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CLIView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +24,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -43,21 +45,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Serge/IdeaProjects/ProejctFlat",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.general"
   }
-}</component>
+}]]></component>
+  <component name="RunDashboard">
+    <option name="openRunningConfigInTab" value="true" />
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -91,12 +99,21 @@
       <option name="project" value="LOCAL" />
       <updated>1710965948144</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="switch case loop">
+      <option name="closed" value="true" />
+      <created>1710971800778</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710971800778</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first structur" />
     <MESSAGE value="comments added" />
-    <option name="LAST_COMMIT_MESSAGE" value="comments added" />
+    <MESSAGE value="switch case loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="switch case loop" />
   </component>
 </project>

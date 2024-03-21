@@ -5,38 +5,44 @@ import models.FlatRepository;
 import models.IRepository;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class FlatController implements IFlatController {
-    private IRepository<Flat> flatRepo;
-
-    private LinkedList<String> commands;
-
-
-    public void addCommand(String lastCommand) {
-        commands.add(lastCommand);
-        if (commands.size() > 15) {
-            commands.removeFirst();
-        }
-    }
-
+    private FlatRepository flatRepo;
 
     public FlatController() {
         flatRepo = new FlatRepository();
     }
 
+    private LinkedList<String> commands;
+
+
+    public void addCommand(String lastCommand) {
+        this.commands.add(lastCommand);
+        if (this.commands.size() > 15) {
+            this.commands.removeFirst();
+        }
+    }
+
+
     @Override
-    public void show(){
-        System.out.println("dfg");
+    public List<Flat> show() {
+        return flatRepo.getFlat();
 
     }
-    @Override
-    public void add(Flat flat) {
-        flatRepo.put("1212", flat);
+@Override
+    public FlatRepository getFlatRepo() {
+        return flatRepo;
     }
 
-public void addFlat(){
+    @Override
+    public void addFlat(Flat flat) {
+        flatRepo.add(flat);
+    }
 
-}
+    //asks for a flat id, then looks which index does it have in flats List
+    @Override
+    update
 
 
     //создаёт файл
