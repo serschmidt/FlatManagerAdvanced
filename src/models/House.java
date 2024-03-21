@@ -7,7 +7,8 @@ public class House implements Comparable<House> {
     //Constructor
     public House(String name, int year) {
         this.name = name;
-        this.year = year;
+        if (validateYear(year))
+            this.year = year;
     }
 
     //getters and setters
@@ -25,6 +26,13 @@ public class House implements Comparable<House> {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public static boolean validateYear(int year) {
+        if (year >= 1850 && year <= 2030 ) {
+            return true;
+        }
+        return false;
     }
 
     @Override

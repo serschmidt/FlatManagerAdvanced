@@ -19,7 +19,7 @@ public class CLIView {      //command line interface
 
     public void startCommunication() {
         Scanner scanner = new Scanner(System.in);
-        String cmd ;
+        String cmd;
         boolean loopIsTrue= true;
 
         do {
@@ -44,68 +44,68 @@ public class CLIView {      //command line interface
                     break;
 
                 case "help":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     help();
                     break;
 
                 case "info":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     startInfoCommand();     //flatRepository метод
                     break;
 
                 case "show":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.show();
                     break;
 
                 case "add":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.addFlat();
                     break;
 
                 case "update":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.updateById(arg);
                     break;
 
                 case "remove":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.removeById(arg);
                     break;
 
                 case "clear":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.clear();
                     break;
 
                 case "remove_head":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.removeHead();
                     break;
 
                 case "history":
-                    addCommand(cmd);
-                    manager.history();
+                    flatController.addCommand(cmd);
+                    flatController.history();
                     break;
 
                 case "filter_balcony":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.filterBalcony();
                     break;
 
                 case "print_ascending":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.printAscending();
                     break;
 
                 case "write":
-                    addCommand(cmd);
+                    flatController.addCommand(cmd);
                     flatController.writeData();
                     break;
 
                 case "read":
-                    addCommand(cmd);
-                    flatController.writeData();
+                    flatController.addCommand(cmd);
+                    flatController.readData();
                     break;
 
                 default:

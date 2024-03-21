@@ -17,12 +17,14 @@ public class Flat implements Comparable<Flat> {
 
     //FLAT CONSTRUCTOR - with furniture
     public Flat(String name, Integer area, Integer numberOfRooms, boolean balcony, Furnish furnish, House house) {
-        this.id = 10115 * 100000 + Flat.count; //Berlin postal index + counter
+        this.id = 10115 * 1000000 + Flat.count; //Berlin postal index + counter
         Flat.count++;
 
         this.name = name;
-        this.area = area;
-        this.numberOfRooms = numberOfRooms;
+        if (validateArea(area))
+            this.area = area;
+        if (validateNumberOfRooms(numberOfRooms))
+            this.numberOfRooms = numberOfRooms;
         this.balcony = balcony;
         this.furnish = furnish;
         this.house = house;
@@ -30,25 +32,30 @@ public class Flat implements Comparable<Flat> {
 
     //FLAT CONSTRUCTOR - without furniture
     public Flat(String name, Integer area, Integer numberOfRooms, boolean balcony, House house) {
-        this.id = 10115 * 100000 + Flat.count; //Berlin postal index + counter
+        this.id = 10115 * 1000000 + Flat.count; //Berlin postal index + counter
         Flat.count++;
 
         this.name = name;
-        this.area = area;
-        this.numberOfRooms = numberOfRooms;
+        if (validateArea(area))
+            this.area = area;
+        if (validateNumberOfRooms(numberOfRooms))
+            this.numberOfRooms = numberOfRooms;
         this.balcony = balcony;
         this.furnish = null;
         this.house = house;
     }
 
 
-    //FLAT CONSTRUCTOR - for reading from a file
+    //FLAT CONSTRUCTOR - for READING from a file
     public Flat(long id, String name, Integer area, Integer numberOfRooms, boolean balcony, Furnish furnish, House house) {
 
-        this.id = id;
+        if (validateId(id))
+            this.id = id;
         this.name = name;
-        this.area = area;
-        this.numberOfRooms = numberOfRooms;
+        if (validateArea(area))
+            this.area = area;
+        if (validateNumberOfRooms(numberOfRooms))
+            this.numberOfRooms = numberOfRooms;
         this.balcony = balcony;
         this.furnish = furnish;
         this.house = house;
@@ -88,6 +95,12 @@ public class Flat implements Comparable<Flat> {
         return id;
     }       //ID can only be viewed, not edited
 
+    public static boolean validateId(long id) {
+        if(id>10115 * 1000000)
+            return true;
+        return false;
+    }
+
     public String getName() {
         return name;
     }
@@ -96,12 +109,21 @@ public class Flat implements Comparable<Flat> {
         this.name = name;
     }
 
+    //validator for name not needed
+
     public Integer getArea() {
         return area;
     }
 
     public void setArea(Integer area) {
         this.area = area;
+    }
+
+    public static boolean validateArea (int area) {
+        if (area>0 && area <=200) {
+            return true;
+        }
+        return false;
     }
 
     public Integer getNumberOfRooms() {
@@ -112,6 +134,12 @@ public class Flat implements Comparable<Flat> {
         this.numberOfRooms = numberOfRooms;
     }
 
+    public static boolean validateNumberOfRooms(int number) {
+        if (number>0 && number<=8)
+            return true;
+        return false;
+    }
+
     public boolean isBalcony() {
         return balcony;
     }
@@ -119,6 +147,8 @@ public class Flat implements Comparable<Flat> {
     public void setBalcony(boolean balcony) {
         this.balcony = balcony;
     }
+
+    //validating balcony not needed
 
     public Furnish getFurnish() {
         return furnish;
@@ -128,6 +158,8 @@ public class Flat implements Comparable<Flat> {
         this.furnish = furnish;
     }
 
+    //validating furnish is not needed
+
     public House getHouse() {
         return house;
     }
@@ -135,6 +167,8 @@ public class Flat implements Comparable<Flat> {
     public void setHouse(House house) {
         this.house = house;
     }
+
+    //House validation done by HOUSE model
 
 }
 
