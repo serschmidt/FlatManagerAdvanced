@@ -2,6 +2,9 @@ package utils;
 
 public enum MutableFields {
     NAME,
-    AREA
-
+    AREA,
+    ROOMS,
+    BALCONY,
+    FURNISH,
+    HOUSE
 }

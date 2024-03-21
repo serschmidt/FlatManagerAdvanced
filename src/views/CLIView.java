@@ -350,7 +350,7 @@ public class CLIView {      //command line interface
             long id = Long.valueOf(args);
 
 
-        int index = flatController..findListIndexByFlatID(args);
+        int index = flatController.findListIndexByFlatID(args);
         //if no such flat - get out
         if (index == -1) {
             System.err.println("There is no flat with such ID!");
@@ -371,54 +371,81 @@ public class CLIView {      //command line interface
             String lineIn = scanner.nextLine().toUpperCase();
             if (!Utils.isEnum(lineIn,MutableFields.class)) {
                 System.out.println("не корректно");
-                return;
+                continue;
             }
             MutableFields changeField = MutableFields.valueOf(lineIn);
-            System.out.println("укажите новое значение");
-            lineIn = scanner.nextLine();
-
-
-
             //switch case launching add-commands to read the values and apply them
+
             // to the flat with index [index]
             switch (changeField) {
 
-                // 1. Neterable fields should be in Ename
-                // Метод
-
-
-
-
-
                 case NAME:
-                    //metod Update
-                    flatController.getFlatRepo().getFlat().get(index).setName(getFlatName());
-                    System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+                    System.out.println("Please enter the new name:");
+                    lineIn = scanner.nextLine();
+                    if (!Utils.isString(lineIn)){
+                        System.out.println("Error: Empty Line");
+                        return;
+                    }
+                    flatController.updateName(index, lineIn);
+                    System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlatByIndex(index));
                     break;
                 case AREA:
+                    System.out.println("Please enter the new Area:");
+                    lineIn = scanner.nextLine();
                     if (!Utils.isInt(lineIn)){
-                        System.out.println();
+                        System.out.println("Error: not a Number");
                         return;
                     }
                     int area = Integer.parseInt(lineIn);
                     if (!Flat.validateArea(area)){
-                        System.out.println("failer");
+                        System.out.println("Error: unacceptable Area");
                         return;
                     }
-                    flatController.update(changeField, value);
-                     break;
-                case "rooms":
-                    flatController.getFlatRepo().getFlat().get(index).setNumberOfRooms(getFlatNrRooms());
-                    System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+                    flatController.updateArea(index, area);
+                    System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlatByIndex(index));
                     break;
-                case "balcony":
-                    flatController.getFlatRepo().getFlat().get(index).setBalcony(getFlatBalcony());
-                    System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+
+
+                case ROOMS:
+                    System.out.println("Please enter the new number of rooms:");
+                    lineIn = scanner.nextLine();
+                    if (!Utils.isInt(lineIn)){
+                        System.out.println("Error: not a Number");
+                        return;
+                    }
+                    int nrRooms = Integer.parseInt(lineIn);
+                    if (!Flat.validateArea(nrRooms)){
+                        System.out.println("Error: unacceptable number of rooms");
+                        return;
+                    }
+                    flatController.updateRoom(index, nrRooms);
+                    System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlatByIndex(index));
                     break;
-                case "furnish":
-                    flatController.getFlatRepo().getFlat().get(index).setFurnish(getFlatFurniture());
-                    System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+
+                case BALCONY:
+                    System.out.println("Please enter weather the Flat has a Balcony:");
+                    lineIn = scanner.nextLine();
+                    if (!Utils.isBoolean(lineIn)){
+                        System.out.println("Error: not true or false");
+                        return;
+                    }
+                    boolean newBalcony = Boolean.parseBoolean(lineIn);
+                    flatController.updateBalcony(index, newBalcony);
+                    System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlatByIndex(index));
                     break;
+
+                case FURNISH:
+                    System.out.println("Please enter :");
+                    lineIn = scanner.nextLine();
+                    if (!Utils.isBoolean(lineIn)){
+                        System.out.println("Error: not true or false");
+                        return;
+                    }
+                    boolean newBalcony = Boolean.parseBoolean(lineIn);
+                    flatController.updateBalcony(index, newBalcony);
+                    System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlatByIndex(index));
+                    break;
+
                 case "house":
                     flatController.getFlatRepo().getFlat().get(index).setHouse(getHouse());
                     System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
@@ -429,6 +456,7 @@ public class CLIView {      //command line interface
                 default:
                     System.err.println("Unacceptable entry!");
             }
+
         } while (looper);
 
     }
