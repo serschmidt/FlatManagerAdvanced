@@ -6,5 +6,6 @@ public enum MutableFields {
     ROOMS,
     BALCONY,
     FURNISH,
-    HOUSE
+    HOUSE,
+    DONE
 }

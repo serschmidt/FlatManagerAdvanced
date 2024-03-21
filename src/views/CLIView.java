@@ -369,7 +369,7 @@ public class CLIView {      //command line interface
                     "house");
             System.out.println("Type 'done' if you wish to stop updating the apartment.");
             String lineIn = scanner.nextLine().toUpperCase();
-            if (!Utils.isEnum(lineIn,MutableFields.class)) {
+            if (!Utils.isEnum(lineIn, MutableFields.class)) {
                 System.out.println("не корректно");
                 continue;
             }
@@ -435,22 +435,44 @@ public class CLIView {      //command line interface
                     break;
 
                 case FURNISH:
-                    System.out.println("Please enter :");
+                    System.out.println("Please enter which Furnish does the Flat have:");
                     lineIn = scanner.nextLine();
-                    if (!Utils.isBoolean(lineIn)){
-                        System.out.println("Error: not true or false");
+                    if (!Utils.isEnum(lineIn,Furnish.class)){
+                        System.out.println("Error: not right furnish");
                         return;
                     }
-                    boolean newBalcony = Boolean.parseBoolean(lineIn);
-                    flatController.updateBalcony(index, newBalcony);
+                    Furnish newFurnish = Furnish.valueOf(lineIn);
+                    flatController.updateFurnish(index, newFurnish);
                     System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlatByIndex(index));
                     break;
 
-                case "house":
-                    flatController.getFlatRepo().getFlat().get(index).setHouse(getHouse());
-                    System.out.println("Updated Flat: " + flatController.getFlatRepo().getFlat().get(index));
+                case HOUSE:
+                    System.out.println("Please enter the new name of the House:");
+                    lineIn = scanner.nextLine();
+                    if (!Utils.isString(lineIn)){
+                        System.out.println("Error: Empty Line");
+                        return;
+                    }
+                    String newHouseName = lineIn;
+                    flatController.updateHouseName(index, newHouseName);
+
+
+                    System.out.println("Please enter the new Year of a House:");
+                    lineIn = scanner.nextLine();
+                    if (!Utils.isInt(lineIn)){
+                        System.out.println("Error: not a Number");
+                        return;
+                    }
+                    int newYear = Integer.parseInt(lineIn);
+                    if (!House.validateYear(newYear)){
+                        System.out.println("Error: please enter correct Year between 1850 and 2030");
+                        return;
+                    }
+                    flatController.updateHouseYear(index, newYear);
+                    System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlatByIndex(index));
                     break;
-                case "done":
+
+                case DONE:
                     looper = false;
                     break;
                 default:
