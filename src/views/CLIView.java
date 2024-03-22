@@ -7,11 +7,10 @@ import models.Flat;
 import models.Furnish;
 import models.House;
 
-import java.io.*;
 import java.util.*;
 
 import utils.MutableFields;
-import utils.MutableFieldsSort;
+import utils.SortableFields;
 
 public class CLIView {      //command line interface
 
@@ -19,6 +18,9 @@ public class CLIView {      //command line interface
     private FlatController flatController;
     private Scanner scanner;
     private Date date;
+
+    private String userName;
+
 
 
 
@@ -29,11 +31,15 @@ public class CLIView {      //command line interface
 
     public void startCommunication() {
         String cmd;
-        boolean loopIsTrue = true;
+        startInfoCommand();
+
+        System.out.println("Please enter your name...");
+        this.userName = scanner.nextLine();
+        help();
 
         do {
             //reading new command
-            System.out.println("\n \nPlease type in what you need...");
+            System.out.println("\n \nPlease, "+userName+", type in what you need...");
 
             String[] lineInParts = null;
             String arg = null;
@@ -49,7 +55,7 @@ public class CLIView {      //command line interface
             switch (cmd) {
                 case "exit":
                     System.out.println("See you next time! Good Bye");
-                    loopIsTrue = false;
+                    System.exit(0);
                     break;
 
                 case "help":
@@ -107,21 +113,21 @@ public class CLIView {      //command line interface
                     this.printAscending();
                     break;
 
-                case "write":
+                case "load":
                     this.addCommand(cmd);
-                    flatController.writeData();
+                    this.load();
                     break;
 
-                case "read":
+                case "save":
                     this.addCommand(cmd);
-                    flatController.readData();
+                    this.save();
                     break;
 
                 default:
                     System.err.println("Unacceptable input!");
 
             }
-        } while (loopIsTrue);
+        } while (true);
 
     }
 
@@ -140,8 +146,8 @@ public class CLIView {      //command line interface
                         "history: show the last 15 commands \n" +
                         "filter_balcony: show all flats with/without balcony \n" +
                         "print_ascending: show the list of flats in ascending order\n" +
-                        "write: write the Data of the Flats into a file.\n" +
-                        "read: get the list of flats from file"
+                        "save: write the Data of the Flats into a file.\n" +
+                        "load: get the list of flats from file"
         );
     }
 
@@ -562,11 +568,12 @@ public class CLIView {      //command line interface
                     "rooms (for the number of rooms)");
             System.out.println("Print 'done' when you wish to return to other functions.");
             String lineIn = scanner.nextLine().toUpperCase();
-            if (!Utils.isEnum(lineIn, MutableFieldsSort.class)) {
+            if (!Utils.isEnum(lineIn, SortableFields.class)) {
                 System.out.println("ERROR: invalid sorting parameter!");
+                System.out.println("Try again.");
                 continue;
             }
-            MutableFields changeField = MutableFields.valueOf(lineIn);
+            SortableFields changeField = SortableFields.valueOf(lineIn);
             //switch case chooses by which parameter the flats are sorted
             switch (changeField) {
                 case NAME:
@@ -593,6 +600,17 @@ public class CLIView {      //command line interface
         } while (true);
     }
 
+    public void load(String fileLocation) {
+        System.out.println("Old flats will be deleted before loading new ones from a file "+fileLocation);
+        flatController.load(fileLocation);
+        System.out.println("List of flats was loaded successfully.");
+    }
+
+    public void save(String fileLocation) {
+        System.out.println("The flat list will be saved to a file "+fileLocation);
+        flatController.save(fileLocation);
+        System.out.println("List of flats was saved successfully.");
+    }
 }
 
 

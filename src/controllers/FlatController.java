@@ -1,24 +1,28 @@
 package controllers;
 
+import models.CSVFileRepository;
 import models.Flat;
 import models.FlatRepository;
 import models.Furnish;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FlatController implements IFlatController {
     private FlatRepository flatRepo;
+    private CSVFileRepository fileRepo;
+    private LinkedList<String> commands;
+
+    private String filePath = "src/file.csv";
 
     public FlatController() {
         flatRepo = new FlatRepository();
+        fileRepo = new CSVFileRepository(filePath);
     }
-
-    private LinkedList<String> commands;
-
     //пока что перманентно
-
-
 
 
     public void addCommand(String lastCommand) {
@@ -102,5 +106,30 @@ public class FlatController implements IFlatController {
 
     public void sortByRooms() {
         flatRepo.sortByRooms();
+    }
+
+    public void load(String fileLocation) {
+        try (FileReader fr = new FileReader(fileLocation)) {
+            BufferedReader br = new BufferedReader(fr);
+            this.clear();
+            do {
+                String line = br.readLine();
+                if (line == null) // finish, if reached the end of the file
+                    break;
+                // split the line into a data parts
+                Flat newFlat = Flat.parseFromCSV(line);
+                this.addFlat(newFlat);
+            } while (true);
+            flatRepo.sortById();
+            int newCount = flatRepo.getNewCount();
+            Flat.setCount(newCount);
+        } catch (IOException e) {
+            System.out.print("ERROR: loading error.");
+        }
+    }
+
+    public void save(String fileLocation) {
+        this.fileRepo.save();
+
     }
 }

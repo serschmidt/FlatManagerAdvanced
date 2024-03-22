@@ -1,9 +1,11 @@
 package utils;
 
-public enum MutableFieldsSort {
+public enum SortableFields {
     NAME,
     AREA,
     ROOMS,
     DONE
 
 }
+
+//remove if not needed
