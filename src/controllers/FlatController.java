@@ -3,7 +3,6 @@ package controllers;
 import models.Flat;
 import models.FlatRepository;
 import models.Furnish;
-import utils.MutableFields;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +16,10 @@ public class FlatController implements IFlatController {
 
     private LinkedList<String> commands;
 
+    //пока что перманентно
+
+
+
 
     public void addCommand(String lastCommand) {
         this.commands.add(lastCommand);
@@ -25,13 +28,15 @@ public class FlatController implements IFlatController {
         }
     }
 
+    public LinkedList<String> getCommands() {
+        return commands;
+    }
 
-    @Override
-    public List<Flat> show() {
-        return flatRepo.getFlat();
+    public List<Flat> getFlatList() {
+        return flatRepo.getFlats();
 
     }
-@Override
+    @Override
     public FlatRepository getFlatRepo() {
         return flatRepo;
     }
@@ -45,6 +50,10 @@ public class FlatController implements IFlatController {
     @Override
     public int getIndexById(Long id){
         return flatRepo.getIndexById(id);
+    }
+
+    public void removeByIndex(int index) {
+        flatRepo.removeByIndex(index);
     }
     public void updateName(int index, String newName ){
     flatRepo.updateName(index, newName);
@@ -74,15 +83,24 @@ public class FlatController implements IFlatController {
         flatRepo.updateHouseYear(index,newHouseYear);
     }
 
+    public void clear() {
+        flatRepo.clear();
+    }
+
+    public Flat removeHead() {
+        return flatRepo.removeHead();
+    }
 
 
-    //создаёт файл
-    //пишит файл
-    //читает файл
+    public void sortByName() {
+        flatRepo.sortByName();
+    }
 
-    //добавление в list
-    //удаление в list
-    //очистку
+    public void sortByArea() {
+        flatRepo.sortByArea();
+    }
 
-
+    public void sortByRooms() {
+        flatRepo.sortByRooms();
+    }
 }

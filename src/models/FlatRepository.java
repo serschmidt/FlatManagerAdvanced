@@ -3,6 +3,7 @@ package models;
 
 import controllers.Utils;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -71,10 +72,42 @@ public class FlatRepository implements IRepository<Flat> {
         this.flats.get(index).getHouse().setYear(newHouseYear);
     }
 
+    public void removeByIndex(int index) {
+        this.flats.remove(index);
+    }
+
+    public void clear () {
+        this.flats.clear();
+    }
+
+    public Flat removeHead() {
+        return this.flats.remove(0);
+    }
 
     @Override
     public void add(Flat flat) {
         this.flats.add(flat);
 
+    }
+
+    public void sortByName() {
+        FlatNameComparator compName = new FlatNameComparator();
+        Collections.sort(flats, compName);
+    }
+
+    public void sortByArea() {
+        //implemented - sorting by Area using Comparable
+        Collections.sort(flats);
+
+        /*
+        //also possible - sorting by Area using FlatAreaComparator
+        FlatAreaComparator compArea = new FlatAreaComparator();
+        Collections.sort(flats, compArea);
+         */
+    }
+
+    public void sortByRooms() {
+        FlatRoomNumberComparator compRooms = new FlatRoomNumberComparator();
+        Collections.sort(flats, compRooms);
     }
 }
