@@ -1,4 +1,7 @@
 package models;
+import controllers.Utils;
+
+import java.io.IOException;
 import java.util.Comparator;
 
 public class Flat implements Comparable<Flat> {
@@ -169,6 +172,78 @@ public class Flat implements Comparable<Flat> {
     }
 
     //House validation done by HOUSE model
+
+    public String getCSVLine(){
+        return (id + ";" +
+                name + ";" +
+                area + ";" +
+                numberOfRooms + ";" +
+                balcony + ";" +
+                furnish.toString()  + ";" +
+                house.getName() + ";" +
+                house.getYear()
+        );
+    }
+
+    public static Flat parseFromCSV(String line) throws IOException {
+        String[] parts = line.split(";");
+
+        //id
+        if(!Utils.isLong(parts[0])){
+            throw new IOException("Error: not a number");}
+        long id = Long.parseLong(parts[0]);
+        if (!validateId(id)) {
+            throw new IOException("Error: wrong ID");}
+
+        //name
+        if(!Utils.isString(parts[1])){
+            throw new IOException("Error: empty Line");}
+        String name = parts[1];
+
+        //area
+        if(!Utils.isInt(parts[2])){
+            throw new IOException("Error: not a number");}
+        int area = Integer.parseInt(parts[2]);
+        if (!validateArea(area)) {
+            throw new IOException("Error: wrong ID");};
+
+        //number of Rooms
+        if(!Utils.isInt(parts[3])){
+            throw new IOException("Error: not a number");}
+        int nrRooms = Integer.parseInt(parts[3]);
+        if (!validateArea(area)) {
+            throw new IOException("Error: wrong ID");};
+
+        //balcony
+        if(!Utils.isBoolean(parts[4])){
+            throw new IOException("Error: not a boolean");}
+        boolean balcony = Boolean.parseBoolean(parts[4]);
+
+        //Furnish
+        if(!Utils.isEnum(parts[5],Furnish.class)){
+            throw new IOException("Error: not a Furnish");}
+        Furnish furnish = Furnish.valueOf(parts[5]);
+
+        //house name
+        if(!Utils.isString(parts[6])){
+            throw new IOException("Error: empty Line");}
+        String houseName = parts[6];
+
+
+        //house year
+        if(!Utils.isInt(parts[7])){
+            throw new IOException("Error: not a number");}
+        int houseYear = Integer.parseInt(parts[7]);
+        if (!House.validateYear(houseYear)) {
+            throw new IOException("Error: wrong ID");};
+
+
+        House house = new House(houseName, houseYear);
+
+
+        Flat flat = new Flat(id, name, area, nrRooms, balcony, furnish, house);
+        return flat;
+    }
 
 }
 
