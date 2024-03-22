@@ -13,12 +13,15 @@ public class CSVFileRepository {
     }
 
     public void save(List<Flat> flats) {
-
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
-
-
+            for (Flat flat : flats) {
+                String line = flat.getCSVLine();
+                bw.write(line);
+                bw.newLine();
+            }
+            bw.flush();
         } catch (IOException e) {
-            System.err.println("Error");
+            System.err.println("IOException: " + e.getMessage());
         }
     }
 

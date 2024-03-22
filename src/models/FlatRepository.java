@@ -9,7 +9,7 @@ import java.util.List;
 
 public class FlatRepository implements IRepository<Flat> {
     //Attribute
-    private List<Flat> flats;
+    private LinkedList<Flat> flats;
 
     //Constructor
     public FlatRepository() {
@@ -109,5 +109,14 @@ public class FlatRepository implements IRepository<Flat> {
     public void sortByRooms() {
         FlatRoomNumberComparator compRooms = new FlatRoomNumberComparator();
         Collections.sort(flats, compRooms);
+    }
+
+    public int getNewCount() {
+        return (int)flats.getLast().getId()-10115 * 1000000+1;
+    }
+
+    public void sortById() {
+        FlatIdComparator compId = new FlatIdComparator();
+        Collections.sort(flats, compId);
     }
 }
