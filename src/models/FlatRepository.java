@@ -43,32 +43,32 @@ public class FlatRepository implements IRepository<Flat> {
         this.flats.get(index);
     }
 
-    public void updateName(int index, String newName ){
+    public void updateName(int index, String newName) {
         this.flats.get(index).setName(newName);
 
     }
 
-    public void updateArea(int index, int newArea ){
+    public void updateArea(int index, int newArea) {
         this.flats.get(index).setArea(newArea);
     }
 
-    public void updateRoom(int index, int newRooms ){
+    public void updateRoom(int index, int newRooms) {
         this.flats.get(index).setNumberOfRooms(newRooms);
     }
 
-    public void updateBalcony(int index, boolean newBalcony ){
+    public void updateBalcony(int index, boolean newBalcony) {
         this.flats.get(index).setBalcony(newBalcony);
     }
 
-        public void updateFurnish(int index, Furnish newFurnish  ){
+    public void updateFurnish(int index, Furnish newFurnish) {
         this.flats.get(index).setFurnish(newFurnish);
     }
 
-    public void updateHouseName(int index, String newHouseName  ){
+    public void updateHouseName(int index, String newHouseName) {
         this.flats.get(index).getHouse().setName(newHouseName);
     }
 
-    public void updateHouseYear(int index, int newHouseYear){
+    public void updateHouseYear(int index, int newHouseYear) {
         this.flats.get(index).getHouse().setYear(newHouseYear);
     }
 
@@ -76,7 +76,7 @@ public class FlatRepository implements IRepository<Flat> {
         this.flats.remove(index);
     }
 
-    public void clear () {
+    public void clear() {
         this.flats.clear();
     }
 
@@ -112,11 +112,16 @@ public class FlatRepository implements IRepository<Flat> {
     }
 
     public int getNewCount() {
-        return (int)flats.getLast().getId()-10115 * 1000000+1;
+        return (int) flats.getLast().getId() - 10115 * 1000000 + 1;
     }
 
     public void sortById() {
         FlatIdComparator compId = new FlatIdComparator();
         Collections.sort(flats, compId);
+    }
+
+    @Override
+    public Flat get(String name) {
+        return null;
     }
 }

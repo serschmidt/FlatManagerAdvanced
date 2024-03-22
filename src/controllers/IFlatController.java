@@ -5,6 +5,7 @@ import models.FlatRepository;
 import models.Furnish;
 import utils.MutableFields;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public interface IFlatController {
@@ -12,16 +13,19 @@ public interface IFlatController {
     public List<Flat> show();
 
     public void addCommand(String lastCommand);
-    public void addFlat(Flat obj);
+
+    public LinkedList<String> getCommands();
+
+    public List<Flat> getFlatList();
 
     public FlatRepository getFlatRepo();
 
-    public int findListIndexByFlatID(String args);
+    public void addFlat(Flat obj);
 
-    public void removeByIndex(int index);
 
     public int getIndexById(Long id);
 
+    public void removeByIndex(int index);
 
     public void updateName(int index, String newName );
 
@@ -39,6 +43,16 @@ public interface IFlatController {
 
     public void clear();
 
+    public Flat removeHead();
 
+    public void sortByName();
+
+    public void sortByArea();
+
+    public void sortByRooms();
+
+    public void save(String fileLocation);
+
+    public void load(String fileLocation);
 
 }

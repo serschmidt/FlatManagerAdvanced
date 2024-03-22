@@ -5,24 +5,24 @@ import views.CLIView;
 public class Main {
     public static void main(String[] args) {
 
-        String fileName = "sources/flat.csv";
-        if (args != null) {
-            fileName = args[0];
-        }
+        String fileName = "flat.csv";
+//        if (args != null) {
+//            fileName = args[0];
+//        }
 
         if (args.length == 0) {
-            System.out.println("Вы не указали путь до файла");
+            System.out.println("You didn't give the path to the file!");
             return;
         }
 
         CLIView view = new CLIView();
-        do {
-            try {
-                view.startCommunication();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        } while(true);
+//        do {
+//            try {
+                view.startCommunication(fileName);
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            }
+//        } while(true);
 
      //   FlatController.read(fileName);
 

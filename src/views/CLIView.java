@@ -2,6 +2,7 @@ package views;
 
 
 import controllers.FlatController;
+import controllers.IFlatController;
 import controllers.Utils;
 import models.Flat;
 import models.Furnish;
@@ -15,7 +16,7 @@ import utils.SortableFields;
 public class CLIView {      //command line interface
 
     //взаимодействие с командной стракой происходит тут
-    private FlatController flatController;
+    private IFlatController flatController;
     private Scanner scanner;
     private Date date;
 
@@ -29,7 +30,9 @@ public class CLIView {      //command line interface
         scanner = new Scanner(System.in);
     }
 
-    public void startCommunication() {
+    public void startCommunication(String filePath) {
+
+        flatController.load(filePath);
         String cmd;
         startInfoCommand();
 
@@ -115,12 +118,12 @@ public class CLIView {      //command line interface
 
                 case "load":
                     this.addCommand(cmd);
-                    this.load();
+                    this.load(filePath);
                     break;
 
                 case "save":
                     this.addCommand(cmd);
-                    this.save();
+                    this.save(filePath);
                     break;
 
                 default:
@@ -155,10 +158,11 @@ public class CLIView {      //command line interface
     public void startInfoCommand() {
         //Roman
         System.out.println("This FLAT MANAGER was initialized on " + this.date + ".");
-        System.out.println("At the moment, the FLAT MANAGER has " + flatController.getFlatRepo().getFlat().size() + " of flats saved.");
-        if (flatController.getFlatRepo().getFlat().size() < 10)
+        int flatSize = getFlatsSize();
+        System.out.println("At the moment, the FLAT MANAGER has " + flatSize + " of flats saved.");
+        if (flatSize < 10)
             System.out.println("Hardly impressive - but there is room for improvement");
-        if (flatController.getFlatRepo().getFlat().size() >= 10)
+        if (flatSize >= 10)
             System.out.println("That's a lot of flats!");
         System.out.println("FLAT MANAGER is the result of collective effort by Team 1, Cohort 40_2 of AIT TR course.");
         System.out.println("- Sergej Schmidt");
@@ -167,6 +171,10 @@ public class CLIView {      //command line interface
         System.out.println("If you have any suggestions and complaints, please let us know!");
         System.out.println("Our email is: we-dont-care-get-lost@gmail.com!");
         System.out.println("We eagerly await your feedback!");
+    }
+
+    private int getFlatsSize(){
+        return flatController.getFlatRepo().getFlats().size();
     }
 
     public void show() {
@@ -357,7 +365,7 @@ public class CLIView {      //command line interface
             long id = Long.valueOf(args);
 
 
-        int index = flatController.findListIndexByFlatID(args);
+        int index = flatController.getIndexById(id);
         //if no such flat - get out
         if (index == -1) {
             System.err.println("There is no flat with such ID!");
@@ -494,7 +502,11 @@ public class CLIView {      //command line interface
     //REMOVE A FLAT BY ID
     public void removeById(String args) {
         //read ID, find if it here is a flat with such id, return index
-        int index = flatController.findListIndexByFlatID(args);
+        if (!Utils.isLong(args)){
+            System.out.println("ERROR: ID should be a number");
+        }
+        long id = Long.parseLong(args);
+        int index = flatController.getIndexById(id);
         if (index != -1) {
             flatController.removeByIndex(index);
             System.out.println("Flat with ID " + args + " removed from the list!");
@@ -573,7 +585,7 @@ public class CLIView {      //command line interface
                 System.out.println("Try again.");
                 continue;
             }
-            SortableFields changeField = SortableFields.valueOf(lineIn);
+            MutableFields changeField = MutableFields.valueOf(lineIn);
             //switch case chooses by which parameter the flats are sorted
             switch (changeField) {
                 case NAME:
@@ -607,7 +619,8 @@ public class CLIView {      //command line interface
     }
 
     public void save(String fileLocation) {
-        System.out.println("The flat list will be saved to a file "+fileLocation);
+
+        System.out.println("The flat list will be saved to a file " + fileLocation);
         flatController.save(fileLocation);
         System.out.println("List of flats was saved successfully.");
     }

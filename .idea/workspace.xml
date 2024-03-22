@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="update switch case">
-      <change afterPath="$PROJECT_DIR$/src/utils/MutableFieldsSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sources/flats.cvs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/FlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FlatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/IFlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/IFlatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/CSVFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/CSVFileRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/FlatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/FlatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/HouseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/HouseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/IRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/CLIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CLIView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,26 +47,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Serge/IdeaProjects/ProejctFlat&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Serge/IdeaProjects/FlatManagerAdvanced/src",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.general"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Serge\IdeaProjects\FlatManagerAdvanced\src" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="FlatManagerAdvanced" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\Serge\IdeaProjects\FlatManagerAdvanced\src\sources\flats.cvs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -130,5 +155,16 @@
     <MESSAGE value="update" />
     <MESSAGE value="update switch case" />
     <option name="LAST_COMMIT_MESSAGE" value="update switch case" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/views/CLIView.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

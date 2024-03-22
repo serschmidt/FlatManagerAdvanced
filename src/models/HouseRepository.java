@@ -7,7 +7,7 @@ public class HouseRepository implements IRepository<House> {
     }
 
     @Override
-    public void put(String id, House obj) {
+    public void add(House obj) {
 
     }
 }
