@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="updated Flat class" />
+    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="update switch case">
+      <change afterPath="$PROJECT_DIR$/src/utils/MutableFieldsSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/FlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FlatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/IFlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/IFlatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/FlatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/FlatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/CLIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CLIView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +28,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,7 +68,6 @@
     <attachedChunks>
       <set>
         <option value="jdk-11.0.21-corretto-11.0.21-4caba194b151-9f4ef98c" />
-        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-868cef46" />
       </set>
     </attachedChunks>
   </component>
@@ -115,15 +120,7 @@
       <option name="project" value="LOCAL" />
       <updated>1711057805066</updated>
     </task>
-    <task id="LOCAL-00006" summary="updated Flat class">
-      <option name="closed" value="true" />
-      <created>1711103985779</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1711103985779</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -132,7 +129,6 @@
     <MESSAGE value="switch case loop" />
     <MESSAGE value="update" />
     <MESSAGE value="update switch case" />
-    <MESSAGE value="updated Flat class" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated Flat class" />
+    <option name="LAST_COMMIT_MESSAGE" value="update switch case" />
   </component>
 </project>

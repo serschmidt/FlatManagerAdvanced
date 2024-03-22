@@ -93,6 +93,12 @@ public class Flat implements Comparable<Flat> {
         return p1+p2+p3+p4;
     }
 
+
+
+    public static void setCount(int newCount){
+        count = newCount;
+    }
+
     //GETTERS AND SETTERS
     public long getId() {
         return id;
@@ -265,5 +271,12 @@ class FlatNameComparator implements Comparator<Flat> {
     @Override
     public int compare(Flat f1, Flat f2) {
         return f1.getName().compareTo(f2.getName());
+    }
+}
+
+class FlatIdComparator implements Comparator<Flat> {
+    @Override
+    public int compare(Flat f1, Flat f2) {
+        return (int)(f1.getId()-f2.getId());
     }
 }

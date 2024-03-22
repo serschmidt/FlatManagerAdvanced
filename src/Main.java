@@ -1,4 +1,6 @@
 import controllers.FlatController;
+import views.CLIView;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -7,6 +9,20 @@ public class Main {
         if (args != null) {
             fileName = args[0];
         }
+
+        if (args.length == 0) {
+            System.out.println("Вы не указали путь до файла");
+            return;
+        }
+
+        CLIView view = new CLIView();
+        do {
+            try {
+                view.startCommunication();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } while(true);
 
      //   FlatController.read(fileName);
 
