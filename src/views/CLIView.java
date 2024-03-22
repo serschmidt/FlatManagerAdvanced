@@ -2,24 +2,25 @@ package views;
 
 
 import controllers.FlatController;
-import controllers.IFlatController;
 import controllers.Utils;
 import models.Flat;
 import models.Furnish;
 import models.House;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
 import utils.MutableFields;
+import utils.MutableFieldsSort;
 
 public class CLIView {      //command line interface
 
     //взаимодействие с командной стракой происходит тут
-    private IFlatController flatController;
+    private FlatController flatController;
     private Scanner scanner;
     private Date date;
+
+
 
     public CLIView() {
         flatController = new FlatController();
@@ -52,67 +53,67 @@ public class CLIView {      //command line interface
                     break;
 
                 case "help":
-                    flatController.addCommand(cmd);
+                    this.addCommand(cmd);
                     this.help();
                     break;
 
                 case "info":
-                    flatController.addCommand(cmd);
+                    this.addCommand(cmd);
                     this.startInfoCommand();     //flatRepository метод
                     break;
 
                 case "show":
-                    flatController.addCommand(cmd);
+                    this.addCommand(cmd);
                     this.show();
                     break;
 
                 case "add":
-                    flatController.addCommand(cmd);
+                    this.addCommand(cmd);
                     this.addFlat();
                     break;
 
                 case "update":
-                    flatController.addCommand(cmd);
-                    flatController.updateById(arg);
+                    this.addCommand(cmd);
+                    this.updateById(arg);
                     break;
 
                 case "remove":
-                    flatController.addCommand(cmd);
-                    flatController.removeById(arg);
+                    this.addCommand(cmd);
+                    this.removeById(arg);
                     break;
 
                 case "clear":
-                    flatController.addCommand(cmd);
-                    flatController.clear();
+                    this.addCommand(cmd);
+                    this.clear();
                     break;
 
                 case "remove_head":
-                    flatController.addCommand(cmd);
-                    flatController.removeHead();
+                    this.addCommand(cmd);
+                    this.removeHead();
                     break;
 
                 case "history":
-                    flatController.addCommand(cmd);
-                    flatController.history();
+                    this.addCommand(cmd);
+                    this.history();
                     break;
 
                 case "filter_balcony":
-                    flatController.addCommand(cmd);
-                    flatController.filterBalcony();
+                    this.addCommand(cmd);
+                    this.filterBalcony();
                     break;
 
                 case "print_ascending":
-                    flatController.addCommand(cmd);
-                    flatController.printAscending();
+                    this.addCommand(cmd);
+                    this.printAscending();
                     break;
 
                 case "write":
-                    flatController.addCommand(cmd);
+                    this.addCommand(cmd);
                     flatController.writeData();
                     break;
 
                 case "read":
-                    flatController.addCommand(cmd);
+                    this.addCommand(cmd);
                     flatController.readData();
                     break;
 
@@ -164,7 +165,7 @@ public class CLIView {      //command line interface
 
     public void show() {
         System.out.println("Showing all flats:");
-        List<Flat> flats = flatController.show();
+        List<Flat> flats = flatController.getFlatList();
         for (Flat flat : flats) {
             System.out.println(flat);
         }
@@ -489,13 +490,108 @@ public class CLIView {      //command line interface
         //read ID, find if it here is a flat with such id, return index
         int index = flatController.findListIndexByFlatID(args);
         if (index != -1) {
-             flats.remove(index);
+            flatController.removeByIndex(index);
             System.out.println("Flat with ID " + args + " removed from the list!");
         } else {
-            System.err.println("No apartment with such ID found!");
+            System.out.println("ERROR: no apartment with such ID found!");
         }
     }
 
+    public void addCommand(String command) {
+        flatController.addCommand(command);
+    }
+
+    //CLEAR the list - with a safeguard against accidental clearing
+    public void clear() {
+        System.out.println("WARNING: this command will delete all flats from the list!");
+        System.out.println("Are you sure? The process is irreversible! Type 'ja' or 'yes' to confirm.");
+        String lineIn = scanner.nextLine().toLowerCase();
+        if (lineIn.equals("ja") || lineIn.equals("yes")) {
+            flatController.clear();
+            System.out.println("All flats deleted");
+        } else {
+            System.out.println("ABORT: list clearing aborted!");
+        }
+    }
+
+    public void removeHead() {
+        System.out.println("Removing the first flat in the list!");
+        System.out.println("This is what it was:");
+        System.out.println(flatController.removeHead());
+    }
+
+    public void history() {
+        LinkedList<String> commandList = flatController.getCommands();
+        System.out.println("The last "+commandList.size()+" commands were:");
+        for (String str : commandList) {
+            System.out.println(str);
+        }
+    }
+
+    public void filterBalcony() {
+        System.out.println("Show all flats with or without balconies! \n " +
+                "with / mit = with a balcony, without / ohne = without one.");
+        String lineIn = scanner.nextLine().toLowerCase();
+        List<Flat> flats = flatController.getFlatList();
+        if (lineIn.equals("with") || lineIn.equals("mit")) {
+            System.out.println("Showing all flats with a balcony:");
+            for (Flat flat : flats) {
+                if (flat.isBalcony()) {
+                    System.out.println(flat);
+                }
+            }
+        } else if (lineIn.equals("without") || lineIn.equals("ohne")) {
+            System.out.println("Showing all flats without a balcony:");
+            for (Flat flat : flats) {
+                if (!flat.isBalcony()) {
+                    System.out.println(flat);
+                }
+            }
+        } else {
+            System.out.println("ERROR: Unacceptable entry...");
+        }
+    }
+
+    public void printAscending () {
+        do {
+            // ask for parameter to change
+            System.out.println("Please let us know by which parameter do you wish to sort the flats.");
+            System.out.println("Acceptable parameters are: \n" +
+                    "name, \n" +
+                    "area, \n" +
+                    "rooms (for the number of rooms)");
+            System.out.println("Print 'done' when you wish to return to other functions.");
+            String lineIn = scanner.nextLine().toUpperCase();
+            if (!Utils.isEnum(lineIn, MutableFieldsSort.class)) {
+                System.out.println("ERROR: invalid sorting parameter!");
+                continue;
+            }
+            MutableFields changeField = MutableFields.valueOf(lineIn);
+            //switch case chooses by which parameter the flats are sorted
+            switch (changeField) {
+                case NAME:
+                    System.out.println("Flat list sorted by name:");
+                    flatController.sortByName();
+                    show();
+                    break;
+                case AREA:
+                    System.out.println("Flat list sorted by area:");
+                    flatController.sortByArea();
+                    show();
+                    break;
+                case ROOMS:
+                    System.out.println("Flat list sorted by number of rooms:");
+                    flatController.sortByRooms();
+                    show();
+                    break;
+                case DONE:
+                    System.out.println("Very well, let's do something else...");
+                    return;
+                default:
+                    System.out.println("ERROR: unacceptable entry! Try again.");
+            }
+        } while (true);
+    }
 
 }
 
