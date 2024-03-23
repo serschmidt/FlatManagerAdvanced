@@ -159,11 +159,14 @@ public class FlatController implements IFlatController {
 
     @Override
     public void load(String fileLocation) {
+        //Removing old contents
+        this.flatRepo.clear();
         this.flatRepo = fileRepo.load(fileLocation);
+
         //new list is already sorted
-        int newCount = this.flatRepo.getNewCount();
+        //int newCount = this.flatRepo.getNewCount();
         //System.out.println(newCount);
-        Flat.setCount(newCount);
+        //Flat.setCount(newCount);
     }
 
 }
