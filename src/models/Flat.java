@@ -20,7 +20,7 @@ public class Flat implements Comparable<Flat> {
 
     //FLAT CONSTRUCTOR - with furniture
     public Flat(String name, Integer area, Integer numberOfRooms, boolean balcony, Furnish furnish, House house) {
-        this.id = 10115 * 1000000 + Flat.count; //Berlin postal index + counter
+        this.id = 10115L * 1000000 + Flat.count; //Berlin postal index + counter
         Flat.count++;
 
         this.name = name;
@@ -35,7 +35,7 @@ public class Flat implements Comparable<Flat> {
 
     //FLAT CONSTRUCTOR - without furniture
     public Flat(String name, Integer area, Integer numberOfRooms, boolean balcony, House house) {
-        this.id = 10115 * 1000000 + Flat.count; //Berlin postal index + counter
+        this.id = 10115L *1000000 + Flat.count; //Berlin postal index + counter
         Flat.count++;
 
         this.name = name;
@@ -180,27 +180,31 @@ public class Flat implements Comparable<Flat> {
     //House validation done by HOUSE model
 
     public String getCSVLine(){
+        //since furnish can be null
+        String furnishStr;
+        if(furnish!=null)
+            furnishStr = furnish.toString();
+        else
+            furnishStr = "";
         return (id + ";" +
                 name + ";" +
                 area + ";" +
                 numberOfRooms + ";" +
                 balcony + ";" +
-                furnish.toString()  + ";" +
+                furnishStr  + ";" +
                 house.getName() + ";" +
                 house.getYear()
         );
     }
 
     public static Flat parseFromCSV(String line) throws IOException {
-        String[] parts = line.split(";");
-
+        String[] parts = line.split(",");
         //id
         if(!Utils.isLong(parts[0])){
             throw new IOException("Error: not a number");}
         long id = Long.parseLong(parts[0]);
         if (!validateId(id)) {
             throw new IOException("Error: wrong ID");}
-
         //name
         if(!Utils.isString(parts[1])){
             throw new IOException("Error: empty Line");}
@@ -243,9 +247,7 @@ public class Flat implements Comparable<Flat> {
         if (!House.validateYear(houseYear)) {
             throw new IOException("Error: wrong ID");};
 
-
         House house = new House(houseName, houseYear);
-
 
         Flat flat = new Flat(id, name, area, nrRooms, balcony, furnish, house);
         return flat;

@@ -5,7 +5,7 @@ import views.CLIView;
 public class Main {
     public static void main(String[] args) {
 
-        String fileName = "flat.csv";
+        String fileName = "src/flats.csv";
 //        if (args != null) {
 //            fileName = args[0];
 //        }
