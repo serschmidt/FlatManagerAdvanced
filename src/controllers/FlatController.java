@@ -18,6 +18,7 @@ public class FlatController implements IFlatController {
     public FlatController() {
         flatRepo = new FlatRepository();
         fileRepo = new CSVFileRepository(filePath);
+        commands = new LinkedList<>();
     }
     //пока что перманентно
 
@@ -48,6 +49,9 @@ public class FlatController implements IFlatController {
     @Override
     public FlatRepository getFlatRepo() {
         return flatRepo;
+    }
+    public void setFlatRepo(FlatRepository newFlatRepo) {
+        flatRepo = newFlatRepo;
     }
 
     @Override
@@ -155,7 +159,11 @@ public class FlatController implements IFlatController {
 
     @Override
     public void load(String fileLocation) {
-        this.fileRepo.load(fileLocation);
+        this.flatRepo = fileRepo.load(fileLocation);
+        //new list is already sorted
+        int newCount = this.flatRepo.getNewCount();
+        //System.out.println(newCount);
+        Flat.setCount(newCount);
     }
 
 }

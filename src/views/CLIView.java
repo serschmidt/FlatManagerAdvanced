@@ -8,6 +8,7 @@ import models.Flat;
 import models.Furnish;
 import models.House;
 
+import java.io.File;
 import java.util.*;
 
 import utils.MutableFields;
@@ -16,28 +17,54 @@ import utils.SortableFields;
 public class CLIView {      //command line interface
 
     //взаимодействие с командной стракой происходит тут
-    private IFlatController flatController;
+    private FlatController flatController;
     private Scanner scanner;
     private Date date;
 
     private String userName;
 
-
-
-
     public CLIView() {
         flatController = new FlatController();
         scanner = new Scanner(System.in);
+        date = new Date();
     }
 
     public void startCommunication(String filePath) {
-
-        flatController.load(filePath);
         String cmd;
-        startInfoCommand();
-
-        System.out.println("Please enter your name...");
+        //load default set of flats
+        flatController.load(filePath);
+        //welcome and offer to save file
+        System.out.print(
+                "Welcome to the ADVANCED FLAT MANAGER!\n" +
+                        "With this application you'll be able to store information about your flats, no fuss. \n" +
+                        "Please, enter your name: \n");
         this.userName = scanner.nextLine();
+        //String savefile = "database/"+userName.toLowerCase()+"_savefile.csv";
+        String savefile = "src/"+userName.toLowerCase()+"_savefile.csv";
+        /*
+        System.out.println("Checking if you already have a saved file under your name...");
+        File f = new File(savefile);
+        if(f.exists() && !f.isDirectory()) {
+            System.out.println("There is a file under you name in our database already! " +
+                    "If you want to load it, type yes/ja.");
+            String response = scanner.nextLine().toLowerCase();
+            if (response.equals("yes") || response.equals("ja")) {
+                this.addCommand("load");
+                this.load(savefile);
+                System.out.println("Done! You can continue working with your file.");
+            } else {
+                System.out.println("As you wish, but consider saving the results of your session in the future.");
+            }
+        } else {
+            System.out.println("It seems you haven't saved any files with us yet. " +
+                    "Carry on, but consider saving the results of your session in the future.");
+        }
+
+         */
+
+
+
+        System.out.print(userName + ", " + "following commands are available to your: \n");
         help();
 
         do {
@@ -118,12 +145,14 @@ public class CLIView {      //command line interface
 
                 case "load":
                     this.addCommand(cmd);
+                    //this.load(savefile);
                     this.load(filePath);
                     break;
 
                 case "save":
                     this.addCommand(cmd);
-                    this.save(filePath);
+                    //this.save(savefile);
+                    this.load(filePath);
                     break;
 
                 default:
@@ -585,7 +614,7 @@ public class CLIView {      //command line interface
                 System.out.println("Try again.");
                 continue;
             }
-            MutableFields changeField = MutableFields.valueOf(lineIn);
+            SortableFields changeField = SortableFields.valueOf(lineIn);
             //switch case chooses by which parameter the flats are sorted
             switch (changeField) {
                 case NAME:

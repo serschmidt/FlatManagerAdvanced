@@ -112,7 +112,7 @@ public class FlatRepository implements IRepository<Flat> {
     }
 
     public int getNewCount() {
-        return (int) flats.getLast().getId() - 10115 * 1000000 + 1;
+        return (int) flats.getLast().getId() - 10115* 1000000 + 1;
     }
 
     public void sortById() {

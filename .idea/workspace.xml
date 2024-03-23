@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="update switch case">
-      <change afterPath="$PROJECT_DIR$/src/sources/flats.cvs" afterDir="false" />
+    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="add load-read">
+      <change afterPath="$PROJECT_DIR$/src/flats.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/FlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FlatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/IFlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/IFlatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flats.cvs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/CSVFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/CSVFileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Flat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Flat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/FlatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/FlatRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/HouseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/HouseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/IRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Furnish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Furnish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/CLIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CLIView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +49,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
@@ -59,7 +60,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Serge/IdeaProjects/FlatManagerAdvanced/src",
+    "last_opened_file_path": "C:/Users/Laptop_HP7/Documents/AIT-TR/FlatManagerAdvanced",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -149,6 +150,7 @@
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first structur" />
     <MESSAGE value="comments added" />
     <MESSAGE value="switch case loop" />
@@ -159,12 +161,25 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="22" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.NoSuchElementException" package="java.util" />
+          <option name="timeStamp" value="25" />
+        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/views/CLIView.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/models/FlatRepository.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="view.flatController.filePath.value" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

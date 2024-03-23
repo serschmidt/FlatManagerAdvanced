@@ -6,3 +6,4 @@ public enum Furnish {
     BAD,
     LITTLE;
 }
+
