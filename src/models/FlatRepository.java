@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FlatRepository implements IRepository<Flat> {
+public class FlatRepository  {
     //Attribute
     private LinkedList<Flat> flats;
 
@@ -81,10 +81,15 @@ public class FlatRepository implements IRepository<Flat> {
     }
 
     public Flat removeHead() {
-        return this.flats.remove(0);
+        Flat firstFlat;
+        try {
+            firstFlat = this.flats.remove(0);
+        } catch (Exception e) {
+            firstFlat = null;
+        }
+        return firstFlat;
     }
 
-    @Override
     public void add(Flat flat) {
         this.flats.add(flat);
 
@@ -112,11 +117,13 @@ public class FlatRepository implements IRepository<Flat> {
     }
 
     public int getNewCount() {
-        //remove later
-        System.out.println(flats.size());
-        Flat lastFlat = flats.getLast();
-        long lastId = lastFlat.getId();
-        return (int) lastId - 10115 * 1000000 + 1;
+        if (flats.size()<1) {
+            return 1;
+        } else {
+            Flat lastFlat = flats.getLast();
+            long lastId = lastFlat.getId();
+            return (int) lastId - 10115 * 1000000 + 1;
+        }
         //return (int) flats.getLast().getId() - 10115 * 1000000 + 1;
     }
 
@@ -125,7 +132,6 @@ public class FlatRepository implements IRepository<Flat> {
         Collections.sort(flats, compId);
     }
 
-    @Override
     public Flat get(String name) {
         return null;
     }

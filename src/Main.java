@@ -23,7 +23,6 @@ public class Main {
 //                System.out.println(e.getMessage());
 //            }
 //        } while(true);
-
      //   FlatController.read(fileName);
 
         //Старт программы

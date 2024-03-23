@@ -161,7 +161,9 @@ public class FlatController implements IFlatController {
     public void load(String fileLocation) {
         //Removing old contents
         this.flatRepo.clear();
-        this.flatRepo = fileRepo.load(fileLocation);
+        if (fileRepo.load(fileLocation)!=null)
+            this.flatRepo = fileRepo.load(fileLocation);
+
 
         //new list is already sorted
         //int newCount = this.flatRepo.getNewCount();
