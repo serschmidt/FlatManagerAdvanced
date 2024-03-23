@@ -30,19 +30,28 @@ public class CSVFileRepository {
         try (FileReader fr = new FileReader(fileLocation)) {
             BufferedReader br = new BufferedReader(fr);
             //подумать
-            additionalFlatRepo.clear();
+            //remove later
+            System.out.println("Buffer initialized");
+            //additionalFlatRepo.clear();
             do {
                 String line = br.readLine();
                 if (line == null) // finish, if reached the end of the file
                     break;
                 // split the line into a data parts
+                //remove later
+                System.out.println("Line prepared successfully to be parsed "+line);
                 Flat newFlat = Flat.parseFromCSV(line);
+                //remove later
+                System.out.println("Flat constructed successfully"+newFlat);
                 additionalFlatRepo.add(newFlat);
             } while (true);
+            //remove later
+            System.out.println("my new repo"+additionalFlatRepo);
             additionalFlatRepo.sortById();
             // überlegen
-            //int newCount = additionalFlatRepo.getNewCount();
-            //Flat.setCount(newCount);
+
+            int newCount = additionalFlatRepo.getNewCount();
+            Flat.setCount(newCount);
         } catch (IOException e) {
             System.out.print("ERROR: loading error.");
         }

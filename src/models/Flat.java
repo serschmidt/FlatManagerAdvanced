@@ -85,8 +85,23 @@ public class Flat implements Comparable<Flat> {
             p2 = " It has no balcony.";
         }
         String p3 = "";
-        if (!(furnish == null))
-            p3 = " This flat has "+furnish+" furnishing.";
+        if (furnish == null)
+            p3 = " The state of its furnishing is unknown at the time.";
+        else
+            switch (furnish) {
+                case DESIGNER:
+                    p3 = " The flat has designer furnishing.";
+                    break;
+                case NONE:
+                    p3 = " The flat has no furnishing whatsoever.";
+                    break;
+                case BAD:
+                    p3 = " The flat has unimpressive furnishing.";
+                    break;
+                case LITTLE:
+                    p3 = " The flat has little furnishing.";
+                    break;
+            }
         String p4 = "";
         if (!(house == null))
             p4 = house.toString();
@@ -198,7 +213,7 @@ public class Flat implements Comparable<Flat> {
     }
 
     public static Flat parseFromCSV(String line) throws IOException {
-        String[] parts = line.split(",");
+        String[] parts = line.split(";");
         //id
         if(!Utils.isLong(parts[0])){
             throw new IOException("Error: not a number");}
@@ -230,14 +245,29 @@ public class Flat implements Comparable<Flat> {
         boolean balcony = Boolean.parseBoolean(parts[4]);
 
         //Furnish
+        if(!Utils.isEnum(parts[5],Furnish.class) && !(parts[5].isEmpty())){
+            throw new IOException("Error: not a Furnish");}
+        Furnish furnish;
+        if (parts[5].isEmpty()) {
+            furnish = null;
+        } else {
+            furnish = Furnish.valueOf(parts[5]);
+        }
+
+        /* old version
         if(!Utils.isEnum(parts[5],Furnish.class)){
             throw new IOException("Error: not a Furnish");}
+
         Furnish furnish = Furnish.valueOf(parts[5]);
+
+         */
 
         //house name
         if(!Utils.isString(parts[6])){
             throw new IOException("Error: empty Line");}
         String houseName = parts[6];
+
+
 
 
         //house year

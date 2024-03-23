@@ -9,6 +9,8 @@ import models.Furnish;
 import models.House;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import utils.MutableFields;
@@ -19,14 +21,14 @@ public class CLIView {      //command line interface
     //взаимодействие с командной стракой происходит тут
     private FlatController flatController;
     private Scanner scanner;
-    private Date date;
+    private LocalDateTime date;
 
     private String userName;
 
     public CLIView() {
         flatController = new FlatController();
         scanner = new Scanner(System.in);
-        date = new Date();
+        date = LocalDateTime.now();
     }
 
     public void startCommunication(String filePath) {
@@ -39,9 +41,9 @@ public class CLIView {      //command line interface
                         "With this application you'll be able to store information about your flats, no fuss. \n" +
                         "Please, enter your name: \n");
         this.userName = scanner.nextLine();
-        //String savefile = "database/"+userName.toLowerCase()+"_savefile.csv";
-        String savefile = "src/"+userName.toLowerCase()+"_savefile.csv";
-        /*
+        String savefile = "database/"+userName.toLowerCase()+"_savefile.csv";
+
+
         System.out.println("Checking if you already have a saved file under your name...");
         File f = new File(savefile);
         if(f.exists() && !f.isDirectory()) {
@@ -60,7 +62,7 @@ public class CLIView {      //command line interface
                     "Carry on, but consider saving the results of your session in the future.");
         }
 
-         */
+
 
 
 
@@ -145,14 +147,14 @@ public class CLIView {      //command line interface
 
                 case "load":
                     this.addCommand(cmd);
-                    //this.load(savefile);
-                    this.load(filePath);
+                    this.load(savefile);
+                    //this.load(filePath);
                     break;
 
                 case "save":
                     this.addCommand(cmd);
-                    //this.save(savefile);
-                    this.load(filePath);
+                    this.save(savefile);
+                    //this.save(filePath);
                     break;
 
                 default:
