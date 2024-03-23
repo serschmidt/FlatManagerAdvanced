@@ -23,7 +23,8 @@ public class Flat implements Comparable<Flat> {
         this.id = 10115L * 1000000 + Flat.count; //Berlin postal index + counter
         Flat.count++;
 
-        this.name = name;
+        if (validateName(name))
+            this.name = name;
         if (validateArea(area))
             this.area = area;
         if (validateNumberOfRooms(numberOfRooms))
@@ -38,7 +39,8 @@ public class Flat implements Comparable<Flat> {
         this.id = 10115L *1000000 + Flat.count; //Berlin postal index + counter
         Flat.count++;
 
-        this.name = name;
+        if (validateName(name))
+            this.name = name;
         if (validateArea(area))
             this.area = area;
         if (validateNumberOfRooms(numberOfRooms))
@@ -54,6 +56,8 @@ public class Flat implements Comparable<Flat> {
 
         if (validateId(id))
             this.id = id;
+        if (validateName(name))
+            this.name = name;
         this.name = name;
         if (validateArea(area))
             this.area = area;
@@ -131,6 +135,13 @@ public class Flat implements Comparable<Flat> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public static boolean validateName (String name) {
+        if (name.length()<=30) {
+            return true;
+        }
+        return false;
     }
 
     //validator for name not needed
@@ -254,21 +265,10 @@ public class Flat implements Comparable<Flat> {
             furnish = Furnish.valueOf(parts[5]);
         }
 
-        /* old version
-        if(!Utils.isEnum(parts[5],Furnish.class)){
-            throw new IOException("Error: not a Furnish");}
-
-        Furnish furnish = Furnish.valueOf(parts[5]);
-
-         */
-
         //house name
         if(!Utils.isString(parts[6])){
             throw new IOException("Error: empty Line");}
         String houseName = parts[6];
-
-
-
 
         //house year
         if(!Utils.isInt(parts[7])){

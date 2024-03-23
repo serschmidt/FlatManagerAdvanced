@@ -2,19 +2,16 @@ package views;
 
 
 import controllers.FlatController;
-import controllers.IFlatController;
 import controllers.Utils;
 import models.Flat;
 import models.Furnish;
 import models.House;
 
 import java.io.File;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
 import utils.MutableFields;
-import utils.SortableFields;
 
 public class CLIView {      //command line interface
 
@@ -55,11 +52,13 @@ public class CLIView {      //command line interface
                 this.load(savefile);
                 System.out.println("Done! You can continue working with your file.");
             } else {
-                System.out.println("As you wish, but consider saving the results of your session in the future.");
+                System.out.println("All right, but consider saving your data before exit.");
             }
         } else {
-            System.out.println("It seems you haven't saved any files with us yet. " +
-                    "Carry on, but consider saving the results of your session in the future.");
+            // System.out.println("It seems you haven't saved any files with us yet. " +
+            //        "Carry on, but consider saving the results of your session in the future.");
+            System.out.println("We'll create a save file just for you!.");
+            this.save(savefile);
         }
 
 
@@ -71,10 +70,11 @@ public class CLIView {      //command line interface
 
         do {
             //reading new command
-            System.out.println("\n \nPlease, "+userName+", type in what you need...");
+            System.out.println("\n \nPlease, "+userName+", enter your command.\n "+
+                    "Type 'help' for command list.");
 
             String[] lineInParts = null;
-            String arg = null;
+            String arg = "";
             cmd = scanner.nextLine().toLowerCase();
 
             if (cmd.contains(" ")) {
@@ -86,8 +86,9 @@ public class CLIView {      //command line interface
             //switch between possible commands
             switch (cmd) {
                 case "exit":
-                    System.out.println("See you next time! Good Bye");
-                    System.exit(0);
+                    this.exit(savefile);
+                    //System.out.println("See you next time! Good Bye");
+                    //System.exit(0);
                     break;
 
                 case "help":
@@ -148,21 +149,31 @@ public class CLIView {      //command line interface
                 case "load":
                     this.addCommand(cmd);
                     this.load(savefile);
-                    //this.load(filePath);
                     break;
 
                 case "save":
                     this.addCommand(cmd);
                     this.save(savefile);
-                    //this.save(filePath);
                     break;
 
                 default:
-                    System.err.println("Unacceptable input!");
+                    System.out.println("Error: unacceptable input command!");
 
             }
         } while (true);
 
+    }
+
+    public void exit(String savefile) {
+        System.out.println("Would you like to save your data first? Please type yes/ja to do so");
+        String line = scanner.nextLine();
+        if (line.toLowerCase().equals("yes") || line.toLowerCase().equals("ja")) {
+            this.save(savefile);
+            System.out.println("File saved! See you next time!");
+        } else {
+            System.out.println("All right, we won't save your data. Good bye and have a nice day!");
+        }
+        System.exit(0);
     }
 
     public void help() {
@@ -188,14 +199,14 @@ public class CLIView {      //command line interface
     //startInfoCommand
     public void startInfoCommand() {
         //Roman
-        System.out.println("This FLAT MANAGER was initialized on " + this.date + ".");
+        System.out.println("This ADVANCED FLAT MANAGER was initialized on " + this.date + ".");
         int flatSize = getFlatsSize();
-        System.out.println("At the moment, the FLAT MANAGER has " + flatSize + " of flats saved.");
+        System.out.println("At the moment, the ADVANCED FLAT MANAGER has " + flatSize + " of flats saved.");
         if (flatSize < 10)
             System.out.println("Hardly impressive - but there is room for improvement");
         if (flatSize >= 10)
             System.out.println("That's a lot of flats!");
-        System.out.println("FLAT MANAGER is the result of collective effort by Team 1, Cohort 40_2 of AIT TR course.");
+        System.out.println("ADVANCED FLAT MANAGER is the result of tireless collective effort by Team 1, Cohort 40_2 of AIT TR course.");
         System.out.println("- Sergej Schmidt");
         System.out.println("- Eugeny Davydov");
         System.out.println("- Roman Sheludko");
@@ -238,7 +249,9 @@ public class CLIView {      //command line interface
             System.out.println("Enter flat's name...");
             flatName = scanner.nextLine();
             if (!Utils.isString(flatName)) {
-                System.err.println("Name can't be empty.");
+                System.out.println("ERROR: the name can't be empty.");
+            } if (!Flat.validateName(flatName)) {
+                System.out.println("ERROR: the name is too long!");
             } else {
                 return flatName;
             }
@@ -389,7 +402,7 @@ public class CLIView {      //command line interface
     public void updateById(String args) {
         //read ID, find if ithere is a flat with such id, return index
         if (!Utils.isLong(args)) {
-            System.err.println("Unacceptable entry, numbers required!");
+            System.out.println("ERROR: unacceptable entry, numbers required!");
             return;
         }
             //searching got the flat with this ID and grabbing its index
@@ -403,7 +416,7 @@ public class CLIView {      //command line interface
             return;
         }
         boolean looper = true;
-        do {
+        while (looper) {
             // ask for parameter to change
             System.out.println("Please let us know which parameter of the apartment do you wish to change.");
             System.out.println("Acceptable parameters are: \n" +
@@ -430,7 +443,11 @@ public class CLIView {      //command line interface
                     lineIn = scanner.nextLine();
                     if (!Utils.isString(lineIn)){
                         System.out.println("Error: Empty Line");
-                        return;
+                        break;
+                    }
+                    if (!Flat.validateName(lineIn)) {
+                        System.out.println("Error: name too long! Please enter a name no longer than 30 characters.");
+                        break;
                     }
                     flatController.updateName(index, lineIn);
                     System.out.print("Updated Flat: " + flatController.getFlatRepo().getFlatByIndex(index));
@@ -525,7 +542,7 @@ public class CLIView {      //command line interface
                     System.err.println("Unacceptable entry!");
             }
 
-        } while (looper);
+        }
 
     }
 
@@ -534,7 +551,8 @@ public class CLIView {      //command line interface
     public void removeById(String args) {
         //read ID, find if it here is a flat with such id, return index
         if (!Utils.isLong(args)){
-            System.out.println("ERROR: ID should be a number");
+            System.out.println("Error: removal requires ID, which should be a number");
+            return;
         }
         long id = Long.parseLong(args);
         int index = flatController.getIndexById(id);
@@ -564,9 +582,13 @@ public class CLIView {      //command line interface
     }
 
     public void removeHead() {
-        System.out.println("Removing the first flat in the list!");
-        System.out.println("This is what it was:");
-        System.out.println(flatController.removeHead());
+        System.out.println("Removing the first flat in the list...");
+        Flat firstFlat = flatController.removeHead();
+        if (firstFlat!=null) {
+            System.out.println("This is what it was:");
+            System.out.println(firstFlat);
+        } else
+            System.out.println("The first flat was a lie! The list was empty.");
     }
 
     public void history() {
@@ -611,12 +633,12 @@ public class CLIView {      //command line interface
                     "rooms (for the number of rooms)");
             System.out.println("Print 'done' when you wish to return to other functions.");
             String lineIn = scanner.nextLine().toUpperCase();
-            if (!Utils.isEnum(lineIn, SortableFields.class)) {
+            if (!Utils.isEnum(lineIn, MutableFields.class)) {
                 System.out.println("ERROR: invalid sorting parameter!");
                 System.out.println("Try again.");
                 continue;
             }
-            SortableFields changeField = SortableFields.valueOf(lineIn);
+            MutableFields changeField = MutableFields.valueOf(lineIn);
             //switch case chooses by which parameter the flats are sorted
             switch (changeField) {
                 case NAME:

@@ -5,11 +5,11 @@ import java.util.List;
 
 public class CSVFileRepository {
     private String filePath;
-    private FlatRepository additionalFlatRepo;
+    //private FlatRepository additionalFlatRepo;
 
     public CSVFileRepository(String filePath) {
         this.filePath = filePath;
-        additionalFlatRepo = new FlatRepository();
+        //additionalFlatRepo = new FlatRepository();
     }
 
     public void save(String filePath, List<Flat> flats) {
@@ -27,26 +27,26 @@ public class CSVFileRepository {
 
 
     public FlatRepository load(String fileLocation) {
+        FlatRepository additionalFlatRepo = new FlatRepository();
         try (FileReader fr = new FileReader(fileLocation)) {
             BufferedReader br = new BufferedReader(fr);
+            /*
+            //checking if the file is empty
+            String emptyCheck = br.readLine();
+            if (emptyCheck == null) // finish, if reached the end of the file
+                return null;
             //подумать
-            //remove later
-            System.out.println("Buffer initialized");
-            //additionalFlatRepo.clear();
+
+             */
             do {
                 String line = br.readLine();
                 if (line == null) // finish, if reached the end of the file
                     break;
                 // split the line into a data parts
-                //remove later
-                System.out.println("Line prepared successfully to be parsed "+line);
                 Flat newFlat = Flat.parseFromCSV(line);
-                //remove later
-                System.out.println("Flat constructed successfully"+newFlat);
                 additionalFlatRepo.add(newFlat);
             } while (true);
-            //remove later
-            System.out.println("my new repo"+additionalFlatRepo);
+
             additionalFlatRepo.sortById();
             // überlegen
 
@@ -57,8 +57,10 @@ public class CSVFileRepository {
         }
         return additionalFlatRepo;
     }
-
+    /*
     public FlatRepository getAdditionalFlatRepo() {
         return additionalFlatRepo;
     }
+
+     */
 }

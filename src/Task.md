@@ -1,4 +1,6 @@
 ### Задача
+https://docs.google.com/document/d/1faDII8TAud9Sh-pZIg_ZvLtMgx1n5e8o8zNsB79zmvY/edit
+
 https://docs.google.com/document/d/1bQBxQ6_in_EHHrmNAxGSxYt35qVXAkDGPVmp_ZjhmtI/edit
 
 ### Задание на среду:
