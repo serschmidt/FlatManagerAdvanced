@@ -5,6 +5,7 @@ public class Utils {
 
     public static boolean isString(String str) {
         //Проверка на пустую Строку
+        str.replaceAll(" ", "");
         if (!str.isEmpty()) {
             return true;
         } else {

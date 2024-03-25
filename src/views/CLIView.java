@@ -11,7 +11,7 @@ import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import utils.MutableFields;
+import models.MutableFields;
 
 public class CLIView {      //command line interface
 
@@ -37,11 +37,21 @@ public class CLIView {      //command line interface
                 "Welcome to the ADVANCED FLAT MANAGER!\n" +
                         "With this application you'll be able to store information about your flats, no fuss. \n" +
                         "Please, enter your name: \n");
-        this.userName = scanner.nextLine();
-        String savefile = "database/"+userName.toLowerCase()+"_savefile.csv";
+        while (true){
+            this.userName = scanner.nextLine().toLowerCase();
+            if (!Utils.isString(this.userName)) {
+                System.out.println("empty Line does not except");
+                continue;
+            }
+            break;
+        }
+        String savefile = "database/" + userName + "_savefile.csv";
 
 
         System.out.println("Checking if you already have a saved file under your name...");
+
+        flatController.mkDatabaseFolder();
+
         File f = new File(savefile);
         if(f.exists() && !f.isDirectory()) {
             System.out.println("There is a file under you name in our database already! " +

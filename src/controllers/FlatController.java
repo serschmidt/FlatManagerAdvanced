@@ -5,6 +5,7 @@ import models.Flat;
 import models.FlatRepository;
 import models.Furnish;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -163,12 +164,13 @@ public class FlatController implements IFlatController {
         this.flatRepo.clear();
         if (fileRepo.load(fileLocation)!=null)
             this.flatRepo = fileRepo.load(fileLocation);
+    }
 
-
-        //new list is already sorted
-        //int newCount = this.flatRepo.getNewCount();
-        //System.out.println(newCount);
-        //Flat.setCount(newCount);
+    public void mkDatabaseFolder(){
+        File theDir = new File("database");
+        if (!theDir.exists()){
+            theDir.mkdirs();
+        }
     }
 
 }

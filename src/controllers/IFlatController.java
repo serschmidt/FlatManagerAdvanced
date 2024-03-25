@@ -3,7 +3,6 @@ package controllers;
 import models.Flat;
 import models.FlatRepository;
 import models.Furnish;
-import utils.MutableFields;
 
 import java.util.LinkedList;
 import java.util.List;
