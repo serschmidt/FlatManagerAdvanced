@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="updated input file">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_jupiter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/roman_savefile.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/FlatRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/HouseTest.java" afterDir="false" />
+    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="Test Utils">
+      <change afterPath="$PROJECT_DIR$/src/tests/FlatTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/FlatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/FlatRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +52,15 @@
     "JUnit.FlatRepositoryTest.getFlatsTest.executor": "Run",
     "JUnit.FlatRepositoryTest.getIndexByIdTest.executor": "Run",
     "JUnit.FlatRepositoryTest.removeByIndexTest.executor": "Run",
+    "JUnit.FlatTest.compareToTest.executor": "Run",
+    "JUnit.FlatTest.getAreaTest.executor": "Run",
+    "JUnit.FlatTest.getIdTest.executor": "Run",
+    "JUnit.FlatTest.getNameTest.executor": "Run",
+    "JUnit.FlatTest.setAreaTest.executor": "Run",
+    "JUnit.FlatTest.setNameTest.executor": "Run",
+    "JUnit.FlatTest.setNumberOfRooms.executor": "Run",
+    "JUnit.FlatTest.validateAreaTest.executor": "Run",
+    "JUnit.FlatTest.validateIdTest.executor": "Run",
     "JUnit.HouseTest.executor": "Run",
     "JUnit.ProjectExampleTest.executor": "Debug",
     "Repository.Attach.Annotations": "false",
@@ -92,59 +96,64 @@
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
   </component>
-  <component name="RunManager" selected="JUnit.FlatRepositoryTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="FlatManagerAdvanced" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlatRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FlatTest.getAreaTest">
+    <configuration name="FlatTest.getAreaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlatRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlatRepositoryTest.getFlatsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FlatManagerAdvanced" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlatRepositoryTest" />
-      <option name="METHOD_NAME" value="getFlatsTest" />
+      <option name="MAIN_CLASS_NAME" value="FlatTest" />
+      <option name="METHOD_NAME" value="getAreaTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlatRepositoryTest.removeByIndexTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlatTest.setAreaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlatRepositoryTest" />
-      <option name="METHOD_NAME" value="removeByIndexTest" />
+      <option name="MAIN_CLASS_NAME" value="FlatTest" />
+      <option name="METHOD_NAME" value="setAreaTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectExampleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlatTest.setNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ProjectExampleTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="FlatTest" />
+      <option name="METHOD_NAME" value="setNameTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlatTest.setNumberOfRooms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlatManagerAdvanced" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlatTest" />
+      <option name="METHOD_NAME" value="setNumberOfRooms" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlatTest.validateAreaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlatManagerAdvanced" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlatTest" />
+      <option name="METHOD_NAME" value="validateAreaTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FlatRepositoryTest" />
-        <item itemvalue="JUnit.FlatRepositoryTest.removeByIndexTest" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ProjectExampleTest" />
-        <item itemvalue="JUnit.FlatRepositoryTest.getFlatsTest" />
+        <item itemvalue="JUnit.FlatTest.getAreaTest" />
+        <item itemvalue="JUnit.FlatTest.setNumberOfRooms" />
+        <item itemvalue="JUnit.FlatTest.validateAreaTest" />
+        <item itemvalue="JUnit.FlatTest.setAreaTest" />
+        <item itemvalue="JUnit.FlatTest.setNameTest" />
       </list>
     </recent_temporary>
   </component>
