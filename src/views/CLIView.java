@@ -38,14 +38,14 @@ public class CLIView {      //command line interface
                         "With this application you'll be able to store information about your flats, no fuss. \n" +
                         "Please, enter your name: \n");
         while (true){
-            this.userName = scanner.nextLine().toLowerCase();
+            this.userName = scanner.nextLine();
             if (!Utils.isString(this.userName)) {
                 System.out.println("empty Line does not except");
                 continue;
             }
             break;
         }
-        String savefile = "database/" + userName + "_savefile.csv";
+        String savefile = "database/" + userName.toLowerCase() + "_savefile.csv";
 
 
         System.out.println("Checking if you already have a saved file under your name...");

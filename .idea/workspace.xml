@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="Test Utils">
-      <change afterPath="$PROJECT_DIR$/src/tests/FlatTest.java" afterDir="false" />
+    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="additional Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/FlatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/FlatTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/UtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/CLIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CLIView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +57,7 @@
     "JUnit.FlatRepositoryTest.getIndexByIdTest.executor": "Run",
     "JUnit.FlatRepositoryTest.removeByIndexTest.executor": "Run",
     "JUnit.FlatTest.compareToTest.executor": "Run",
+    "JUnit.FlatTest.executor": "Run",
     "JUnit.FlatTest.getAreaTest.executor": "Run",
     "JUnit.FlatTest.getIdTest.executor": "Run",
     "JUnit.FlatTest.getNameTest.executor": "Run",
@@ -62,7 +67,9 @@
     "JUnit.FlatTest.validateAreaTest.executor": "Run",
     "JUnit.FlatTest.validateIdTest.executor": "Run",
     "JUnit.HouseTest.executor": "Run",
+    "JUnit.MainTest.testUtilsIsBoolean.executor": "Run",
     "JUnit.ProjectExampleTest.executor": "Debug",
+    "JUnit.UtilsTest.testUtilsIsBoolean.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -76,7 +83,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Laptop_HP7/Documents/AIT-TR/FlatManagerAdvanced",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -96,52 +103,49 @@
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
   </component>
-  <component name="RunManager" selected="JUnit.FlatTest.getAreaTest">
-    <configuration name="FlatTest.getAreaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FlatTest.validateNumberOfRoomsTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="FlatManagerAdvanced" />
+      <option name="PROGRAM_PARAMETERS" value="src/flats.csv" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlatTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FlatTest" />
-      <option name="METHOD_NAME" value="getAreaTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlatTest.getIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlatManagerAdvanced" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlatTest" />
+      <option name="METHOD_NAME" value="getIdTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlatTest.setAreaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlatTest.validateIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FlatTest" />
-      <option name="METHOD_NAME" value="setAreaTest" />
+      <option name="METHOD_NAME" value="validateIdTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlatTest.setNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlatTest.validateNumberOfRoomsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FlatTest" />
-      <option name="METHOD_NAME" value="setNameTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlatTest.setNumberOfRooms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FlatManagerAdvanced" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlatTest" />
-      <option name="METHOD_NAME" value="setNumberOfRooms" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlatTest.validateAreaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FlatManagerAdvanced" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlatTest" />
-      <option name="METHOD_NAME" value="validateAreaTest" />
+      <option name="METHOD_NAME" value="validateNumberOfRoomsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FlatTest.getAreaTest" />
-        <item itemvalue="JUnit.FlatTest.setNumberOfRooms" />
-        <item itemvalue="JUnit.FlatTest.validateAreaTest" />
-        <item itemvalue="JUnit.FlatTest.setAreaTest" />
-        <item itemvalue="JUnit.FlatTest.setNameTest" />
+        <item itemvalue="JUnit.FlatTest.validateNumberOfRoomsTest" />
+        <item itemvalue="JUnit.FlatTest" />
+        <item itemvalue="JUnit.FlatTest.getIdTest" />
+        <item itemvalue="JUnit.FlatTest.validateIdTest" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -230,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711187497334</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="additional Test">
+      <option name="closed" value="true" />
+      <created>1711438505663</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711438505663</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -242,7 +254,8 @@
     <MESSAGE value="update switch case" />
     <MESSAGE value="update Client" />
     <MESSAGE value="update parsefromCSV&#10;update Flat toString" />
-    <option name="LAST_COMMIT_MESSAGE" value="update parsefromCSV&#10;update Flat toString" />
+    <MESSAGE value="additional Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="additional Test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -259,6 +272,29 @@
           <url>file://$PROJECT_DIR$/src/models/Flat.java</url>
           <line>281</line>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/models/Flat.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/tests/FlatTest.java</url>
+          <line>37</line>
+          <properties class="FlatTest" method="validateIdTest">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/tests/UtilsTest.java</url>
+          <line>60</line>
+          <properties class="UtilsTest" method="testUtilsIsBoolean">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

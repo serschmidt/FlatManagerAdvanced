@@ -13,8 +13,8 @@ public class FlatTest {
     @BeforeEach
     public void setUp() {
         this.house = new House("Townhouse", 2008);
-        this.flat1 = new Flat(1011500001, "first flat", 50, 5, false, null, house);
-        this.flat2 = new Flat(1011500002, "second flat", 40, 2, true, null, house);
+        this.flat1 = new Flat("first flat", 50, 5, false, null, house);
+        this.flat2 = new Flat( "second flat", 40, 2, true, null, house);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class FlatTest {
 
     @Test
     void getIdTest() {
-        Assertions.assertEquals(1011500001, flat1.getId());
+        Assertions.assertEquals(flat2.getId()-1, flat1.getId());
     }
 
     @Test
@@ -94,8 +94,8 @@ public class FlatTest {
     @Test
     void validateNumberOfRoomsTest() {
         Assertions.assertTrue(flat1.validateNumberOfRooms(5));
-        Assertions.assertTrue(flat1.validateNumberOfRooms(-1));
-        Assertions.assertTrue(flat1.validateNumberOfRooms(10));
+        Assertions.assertFalse(flat1.validateNumberOfRooms(-1));
+        Assertions.assertFalse(flat1.validateNumberOfRooms(10));
     }
 
 

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 //import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class MainTest {
+public class UtilsTest {
 //    @BeforeEach
 //    public void onStart() {
         String i = "22";
@@ -65,7 +65,7 @@ public class MainTest {
         Assertions.assertFalse(Utils.isBoolean(emptyLine));
         Assertions.assertFalse(Utils.isBoolean(nullLine));
         Assertions.assertTrue(Utils.isBoolean(isTrue));
-        Assertions.assertFalse(Utils.isBoolean(isFalse));
+        Assertions.assertTrue(Utils.isBoolean(isFalse));
     }
 
     @Test
