@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         String fileName = "src/flats.csv";
-        if (args != null) {
+        if (!(args.length == 0)) {
             fileName = args[0];
         }
         /*
