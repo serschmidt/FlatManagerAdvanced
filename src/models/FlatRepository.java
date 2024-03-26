@@ -20,7 +20,6 @@ public class FlatRepository  {
     public int getIndexById(Long id) {
         int index = -1;
         //reading the id from the user
-
         for (int i = 0; i < flats.size(); i++) {
             if (flats.get(i).getId() == id) {
                 index = i;

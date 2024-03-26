@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="updated input file">
-      <change afterPath="$PROJECT_DIR$/database/sergej_savefile.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/MainTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/ProjectExampleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/CLIViewTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_jupiter.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/roman_savefile.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/FlatRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/HouseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlatManagerAdvanced.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FlatManagerAdvanced.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/FlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/FlatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/IFlatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/IFlatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/MutableFields.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/MutableFields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/CLIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CLIView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/FlatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/FlatRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +53,18 @@
     "JUnit.CLIViewTest.executor": "Run",
     "JUnit.CLIViewTest.startCommunication.executor": "Run",
     "JUnit.CLIViewTest.testUtils.executor": "Run",
+    "JUnit.FlatRepositoryTest.executor": "Run",
+    "JUnit.FlatRepositoryTest.getFlatsTest.executor": "Run",
+    "JUnit.FlatRepositoryTest.getIndexByIdTest.executor": "Run",
+    "JUnit.FlatRepositoryTest.removeByIndexTest.executor": "Run",
+    "JUnit.HouseTest.executor": "Run",
+    "JUnit.ProjectExampleTest.executor": "Debug",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
@@ -89,68 +92,59 @@
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.FlatRepositoryTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="FlatManagerAdvanced" />
-      <option name="PROGRAM_PARAMETERS" value="C:\Users\Serge\IdeaProjects\FlatManagerAdvanced\src\sources\flats.cvs" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CLIViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlatRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="views.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="views" />
-      <option name="MAIN_CLASS_NAME" value="views.CLIViewTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlatRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CLIViewTest.startCommunication" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlatRepositoryTest.getFlatsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="views.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="views" />
-      <option name="MAIN_CLASS_NAME" value="views.CLIViewTest" />
-      <option name="METHOD_NAME" value="startCommunication" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlatRepositoryTest" />
+      <option name="METHOD_NAME" value="getFlatsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CLIViewTest.testUtils" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlatRepositoryTest.removeByIndexTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="views.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="views" />
-      <option name="MAIN_CLASS_NAME" value="views.CLIViewTest" />
-      <option name="METHOD_NAME" value="testUtils" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FlatRepositoryTest" />
+      <option name="METHOD_NAME" value="removeByIndexTest" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProjectExampleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlatManagerAdvanced" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProjectExampleTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FlatRepositoryTest" />
+        <item itemvalue="JUnit.FlatRepositoryTest.removeByIndexTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CLIViewTest.testUtils" />
-        <item itemvalue="JUnit.CLIViewTest" />
-        <item itemvalue="JUnit.CLIViewTest.startCommunication" />
+        <item itemvalue="JUnit.ProjectExampleTest" />
+        <item itemvalue="JUnit.FlatRepositoryTest.getFlatsTest" />
       </list>
     </recent_temporary>
   </component>

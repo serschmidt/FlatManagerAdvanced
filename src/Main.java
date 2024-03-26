@@ -9,11 +9,13 @@ public class Main {
 //        if (args != null) {
 //            fileName = args[0];
 //        }
-
+        /*
         if (args.length == 0) {
             System.out.println("You didn't give the path to the file!");
             return;
         }
+
+         */
 
         CLIView view = new CLIView();
 //        do {
