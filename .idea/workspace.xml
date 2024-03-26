@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="final Version">
+    <list default="true" id="1eca3b2d-9958-43b4-ac21-97c1982cacff" name="Changes" comment="change checking input line agrument">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/FlatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/FlatTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/UtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/UtilsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +68,7 @@
     "JUnit.HouseTest.executor": "Run",
     "JUnit.MainTest.testUtilsIsBoolean.executor": "Run",
     "JUnit.ProjectExampleTest.executor": "Debug",
+    "JUnit.UtilsTest.executor": "Run",
     "JUnit.UtilsTest.testUtilsIsBoolean.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -100,7 +103,7 @@
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.UtilsTest.testUtilsIsBoolean">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="FlatManagerAdvanced" />
@@ -117,26 +120,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlatTest.getIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FlatManagerAdvanced" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlatTest" />
-      <option name="METHOD_NAME" value="getIdTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlatTest.validateIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FlatManagerAdvanced" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FlatTest" />
-      <option name="METHOD_NAME" value="validateIdTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FlatTest.validateNumberOfRoomsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FlatManagerAdvanced" />
       <option name="PACKAGE_NAME" value="" />
@@ -147,13 +130,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UtilsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlatManagerAdvanced" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UtilsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UtilsTest.testUtilsIsBoolean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FlatManagerAdvanced" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UtilsTest" />
+      <option name="METHOD_NAME" value="testUtilsIsBoolean" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UtilsTest.testUtilsIsBoolean" />
+        <item itemvalue="JUnit.UtilsTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.FlatTest.validateNumberOfRoomsTest" />
         <item itemvalue="JUnit.FlatTest" />
-        <item itemvalue="JUnit.FlatTest.getIdTest" />
-        <item itemvalue="JUnit.FlatTest.validateIdTest" />
       </list>
     </recent_temporary>
   </component>
@@ -246,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711441831860</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="change checking input line agrument">
+      <option name="closed" value="true" />
+      <created>1711442734076</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711442734076</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -260,7 +270,8 @@
     <MESSAGE value="update parsefromCSV&#10;update Flat toString" />
     <MESSAGE value="additional Test" />
     <MESSAGE value="final Version" />
-    <option name="LAST_COMMIT_MESSAGE" value="final Version" />
+    <MESSAGE value="change checking input line agrument" />
+    <option name="LAST_COMMIT_MESSAGE" value="change checking input line agrument" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

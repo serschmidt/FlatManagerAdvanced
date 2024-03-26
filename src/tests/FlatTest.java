@@ -109,7 +109,6 @@ public class FlatTest {
         Assertions.assertEquals(5,flat1.getNumberOfRooms());
     }
 
-
-
-
 }
+
+//comment for new commit
